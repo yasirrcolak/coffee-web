@@ -63,6 +63,7 @@
 				          <li><a href="#coffee">Coffee</a></li>
 				          <li><a href="#review">Review</a></li>
 				          <li><a href="#blog">Blog</a></li>
+				          <li><a href="bloglar.php">Bloglar</a></li>
 
 						  <?php
 							include 'php/user.php';
@@ -74,6 +75,7 @@
 							}
 
 
+						
 /*
 							if(($_POST['user'])){
 								$currentUserID = -1;
@@ -379,17 +381,41 @@
 						</div>	
 					</div>
 					<div class="row counter-row">
+								
+						<?php 
+							include 'php/connection.php';
+							$db = $con->query("select COUNT(kullanici_id) from `kullanici`");
+							$sonuc = $db->fetch_assoc();
+							$toplamKullanici = $sonuc['COUNT(kullanici_id)'];
+						?>
+
 						<div class="col-lg-3 col-md-6 single-counter">
-							<h1 class="counter">2536</h1>
-							<p>Happy Client</p>
+							<h1 class="counter"><?php echo $toplamKullanici ?></h1>
+							<p>Toplam Kullanıcı</p>
 						</div>
+
+						<?php 
+							include 'php/connection.php';
+							$db = $con->query("select COUNT(blog_id) from `bloglar`");
+							$sonuc = $db->fetch_assoc();
+							$toplamBlog = $sonuc['COUNT(blog_id)'];
+						?>
+
 						<div class="col-lg-3 col-md-6 single-counter">
-							<h1 class="counter">7562</h1>
-							<p>Total Projects</p>
+							<h1 class="counter"><?php echo $toplamBlog ?></h1>
+							<p>Toplam Blog Yazısı</p>
 						</div>
+
+						<?php 
+							include 'php/connection.php';
+							$db = $con->query("select COUNT(yorum_id) from `yorum`");
+							$sonuc = $db->fetch_assoc();
+							$toplamYorum = $sonuc['COUNT(yorum_id)'];
+						?>
+
 						<div class="col-lg-3 col-md-6 single-counter">
-							<h1 class="counter">2013</h1>
-							<p>Cups Coffee</p>
+							<h1 class="counter"><?php echo $toplamYorum ?></h1>
+							<p>Toplam Yorum</p>
 						</div>
 						<div class="col-lg-3 col-md-6 single-counter">
 							<h1 class="counter">10536</h1>
@@ -412,67 +438,126 @@
 						</div>
 					</div>						
 					<div class="row">
+					
+						<?php
+							include 'php/connection.php';
+				            $db = $con->query("select * from `bloglar` where bloglar.blog_id = 1");
+							$sonuc = $db->fetch_assoc();
+							$blog1resim = $sonuc['resim'];
+							$blog1baslik = $sonuc['baslik'];
+							$blog1icerik = $sonuc['icerik'];
+							$blog1yazarID = $sonuc['kullanici_id'];
+							$blog1tarih = $sonuc['tarihSaat'];
+
+				            $db = $con->query("SELECT kullanici.kullanici_adi FROM `kullanici` WHERE kullanici.kullanici_id = '$blog1yazarID'");
+							$sonuc = $db->fetch_assoc();
+							$blog1yazarAdi = $sonuc['kullanici_adi'];
+
+						?>
+
 						<div class="col-lg-6 col-md-6 single-blog">
-							<img class="img-fluid" src="img/b1.jpg" alt="">
+							<img class="img-fluid" src="img/<?php echo $blog1resim?>" alt="">
 							<ul class="post-tags">
-								<li><a href="#">Travel</a></li>
-								<li><a href="#">Life Style</a></li>
+								<li><a><?php echo $blog1yazarAdi ?></a></li>
 							</ul>
-							<a href="#"><h4>Portable latest Fashion for young women</h4></a>
+							<a href="generic_blog.php?blog=1&kullanici=<?php echo $currentUserID ?>"><h4><?php echo $blog1baslik ?></h4></a>
 							<p>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore  et dolore.
+							<?php echo $blog1icerik ?>
 							</p>
 							<p class="post-date">
-								31st January, 2018
-							</p>
-						</div>
-						<div class="col-lg-6 col-md-6 single-blog">
-							<img class="img-fluid" src="img/b2.jpg" alt="">
-							<ul class="post-tags">
-								<li><a href="#">Travel</a></li>
-								<li><a href="#">Life Style</a></li>
-							</ul>
-							<a href="#"><h4>Portable latest Fashion for young women</h4></a>
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore  et dolore.
-							</p>
-							<p class="post-date">
-								31st January, 2018
-							</p>
-						</div>
-							
-						<div class="col-lg-6 col-md-6 single-blog">
-							<img class="img-fluid" src="img/b2.jpg" alt="">
-							<ul class="post-tags">
-								<li><a href="#">Travel</a></li>
-								<li><a href="#">Life Style</a></li>
-							</ul>
-							<a href="#"><h4>Portable latest Fashion for young women</h4></a>
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore  et dolore.
-							</p>
-							<p class="post-date">
-								31st January, 2018
+							<?php echo $blog1tarih ?>
 							</p>
 						</div>
 
+						<?php
+							include 'php/connection.php';
+				            $db = $con->query("select * from `bloglar` where bloglar.blog_id = 2");
+							$sonuc = $db->fetch_assoc();
+							$blog2resim = $sonuc['resim'];
+							$blog2baslik = $sonuc['baslik'];
+							$blog2icerik = $sonuc['icerik'];
+							$blog2yazarID = $sonuc['kullanici_id'];
+							$blog2tarih = $sonuc['tarihSaat'];
+
+				            $db = $con->query("SELECT kullanici.kullanici_adi FROM `kullanici` WHERE kullanici.kullanici_id = '$blog2yazarID'");
+							$sonuc = $db->fetch_assoc();
+							$blog2yazarAdi = $sonuc['kullanici_adi'];
+
+						?>
+
 						<div class="col-lg-6 col-md-6 single-blog">
-							<img class="img-fluid" src="img/b2.jpg" alt="">
+							<img class="img-fluid" src="img/<?php echo $blog2resim?>" alt="">
 							<ul class="post-tags">
-								<li><a href="#">Travel</a></li>
-								<li><a href="#">Life Style</a></li>
+								<li><a><?php echo $blog2yazarAdi ?></a></li>
 							</ul>
-							<a href="#"><h4>Portable latest Fashion for young women</h4></a>
+							<a href="generic_blog.php?blog=2&kullanici=<?php echo $currentUserID ?>"><h4><?php echo $blog2baslik ?></h4></a>
 							<p>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore  et dolore.
+							<?php echo $blog2icerik ?>
 							</p>
 							<p class="post-date">
-								31st January, 2018
+							<?php echo $blog2tarih ?>
 							</p>
 						</div>
 
+						<?php
+							include 'php/connection.php';
+				            $db = $con->query("select * from `bloglar` where bloglar.blog_id = 3");
+							$sonuc = $db->fetch_assoc();
+							$blog3resim = $sonuc['resim'];
+							$blog3baslik = $sonuc['baslik'];
+							$blog3icerik = $sonuc['icerik'];
+							$blog3yazarID = $sonuc['kullanici_id'];
+							$blog3tarih = $sonuc['tarihSaat'];
 
+				            $db = $con->query("SELECT kullanici.kullanici_adi FROM `kullanici` WHERE kullanici.kullanici_id = '$blog3yazarID'");
+							$sonuc = $db->fetch_assoc();
+							$blog3yazarAdi = $sonuc['kullanici_adi'];
 
+						?>
+
+						<div class="col-lg-6 col-md-6 single-blog">
+							<img class="img-fluid" src="img/<?php echo $blog3resim?>" alt="">
+							<ul class="post-tags">
+								<li><a><?php echo $blog3yazarAdi ?></a></li>
+							</ul>
+							<a href="generic_blog.php?blog=3&kullanici=<?php echo $currentUserID ?>"><h4><?php echo $blog3baslik ?></h4></a>
+							<p>
+							<?php echo $blog3icerik ?>
+							</p>
+							<p class="post-date">
+							<?php echo $blog2tarih ?>
+							</p>
+						</div>
+
+						<?php
+							include 'php/connection.php';
+				            $db = $con->query("select * from `bloglar` where bloglar.blog_id = 4");
+							$sonuc = $db->fetch_assoc();
+							$blog4resim = $sonuc['resim'];
+							$blog4baslik = $sonuc['baslik'];
+							$blog4icerik = $sonuc['icerik'];
+							$blog4yazarID = $sonuc['kullanici_id'];
+							$blog4tarih = $sonuc['tarihSaat'];
+
+				            $db = $con->query("SELECT kullanici.kullanici_adi FROM `kullanici` WHERE kullanici.kullanici_id = '$blog4yazarID'");
+							$sonuc = $db->fetch_assoc();
+							$blog4yazarAdi = $sonuc['kullanici_adi'];
+
+						?>
+
+						<div class="col-lg-6 col-md-6 single-blog">
+							<img class="img-fluid" src="img/<?php echo $blog4resim?>" alt="">
+							<ul class="post-tags">
+								<li><a><?php echo $blog4yazarAdi ?></a></li>
+							</ul>
+							<a href="generic_blog.php?blog=4&kullanici=<?php echo $currentUserID ?>"><h4><?php echo $blog4baslik ?></h4></a>
+							<p>
+							<?php echo $blog4icerik ?>
+							</p>
+							<p class="post-date">
+							<?php echo $blog2tarih ?>
+							</p>
+						</div>
 
 					</div>
 				</div>	

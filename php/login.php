@@ -19,6 +19,11 @@
         if($count == 1){  
             echo "<h1><center> Login successful </center></h1>";  
             include 'user.php';
+            
+            $currentUser = $con->query("select kullanici.tip from `kullanici` where kullanici_adi = '$username'");
+            $sonuc = $currentUser->fetch_assoc();
+            $currentUserTip = $sonuc['tip'];
+            
             $currentUser = $con->query("select kullanici.kullanici_id from `kullanici` where kullanici_adi = '$username'");
             $sonuc = $currentUser->fetch_assoc();
             $currentUserID = $sonuc['kullanici_id'];
@@ -32,11 +37,16 @@
             </script>
             </form>
             <?php
-*/
-
-
-  //          header("Location: https://localhost/coffee-web/index.php");
-          header("Location: https://localhost/coffee-web/index.php?kullanici=$currentUserID");
+            */          
+            
+          if($currentUserTip == "A")
+          {
+            header("Location: https://localhost/coffee-web/admin.php");
+          }
+          else
+          {
+            header("Location: https://localhost/coffee-web/index.php?kullanici=$currentUserID");
+          }
 
         }  
         else{  
