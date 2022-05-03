@@ -13,7 +13,7 @@
       
         $maxid = $maxid->num_rows + 1;
 
-        $sql = "INSERT INTO `kullanici`(`kullanici_id`, `kullanici_adi`, `sifre`, `tip`) VALUES ('$maxid->num_rows','$username','$password','K')";  
+        $sql = "INSERT INTO `kullanici`(`kullanici_id`, `kullanici_adi`, `sifre`, `tip`) VALUES ('$maxid','$username','$password','K')";  
         $result = mysqli_query($con, $sql);  
         
         if($result == 1){  
@@ -22,6 +22,4 @@
         }  
         else{  
             echo "<h1> Hata! Bi şey oldu? </h1>";  
-        }     
-        
-?>  
+        }

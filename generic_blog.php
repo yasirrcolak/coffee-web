@@ -33,15 +33,28 @@
 <body>
 
     <header id="header" id="home">
+
+        <?php
+        include 'php/user.php';
+
+        if (isset($_GET['kullanici'])) {
+            $currentUserID = $_GET["kullanici"];
+        } else {
+            $currentUserID = -1;
+        }
+
+        ?>
+
         <div class="container">
             <div class="row align-items-center justify-content-between d-flex">
                 <div id="logo">
-                    <a href="index.php"><img src="img/logo.png" alt="" title="" /></a>
+                    <a href="index.php?kullanici=<?php echo $currentUserID ?>"><img src="img/logo.png" alt="" title="" /></a>
                 </div>
                 <nav id="nav-menu-container">
                     <ul class="nav-menu">
-                        <li class="menu-active"><a href="index.php">Anasayfa</a></li>
-                        <li class="menu-active"><a href="bloglar.php">Bloglar</a></li>
+
+                        <li class="menu-active"><a href="index.php?kullanici=<?php echo $currentUserID ?>">Anasayfa</a></li>
+                        <li class="menu-active"><a href="bloglar.php?kullanici=<?php echo $currentUserID ?>">Bloglar</a></li>
 
                         <?php
                         include 'php/user.php';
@@ -67,6 +80,21 @@
                             ?>
                             <li><a href="#"><?php echo $result ?></a>
                                 <ul>
+                                    <li><a href="blog_ekle.php?kullanici=<?php echo $currentUserID ?>">Blog Ekle</a></li>
+
+                                    <?php
+                                    include 'php/connection.php';
+                                    $currentUserTip = $con->query("SELECT kullanici.tip FROM `kullanici` WHERE kullanici.kullanici_id = '$currentUserID'");
+                                    $result = $currentUserTip->fetch_assoc();
+                                    $result = $result['tip'];
+
+                                    if ($result == "A") {
+                                    ?>
+                                        <li><a href="admin.php?kullanici=<?php echo $currentUserID ?>">Admin Dashboard</a></li>
+                                    <?php
+                                    }
+                                    ?>
+
                                     <li><a href="index.php">Çıkış Yap</a></li>
                                 </ul>
                             </li>

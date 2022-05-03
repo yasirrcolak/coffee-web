@@ -41,7 +41,7 @@
             
           if($currentUserTip == "A")
           {
-            header("Location: https://localhost/coffee-web/admin.php");
+            header("Location: https://localhost/coffee-web/admin.php?kullanici=$currentUserID");
           }
           else
           {
@@ -51,5 +51,4 @@
         }  
         else{  
             echo "<h1> Login failed. Invalid username or password.</h1>";  
-        }     
-?>  
+        }
