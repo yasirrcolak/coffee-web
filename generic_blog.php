@@ -259,7 +259,7 @@
                     } else {
                     ?>
 
-                        <form action="php/login.php" onsubmit={validation()} method="POST">
+                        <form action="" onsubmit={validation()} method="POST">
 
                             <div class="mt-10">
                                 <input type="text" id="yorum" name="yorum" placeholder="Yorum ekleyin..." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Yorum ekleyin...'" required class="single-input-primary">
