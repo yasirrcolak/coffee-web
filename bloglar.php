@@ -63,6 +63,9 @@
 
 						if (isset($_GET['kullanici'])) {
 							$currentUserID = $_GET["kullanici"];
+							if ($currentUserID == "") {
+								$currentUserID = -1;
+							}
 						} else {
 							$currentUserID = -1;
 						}
@@ -146,7 +149,6 @@
 			</div>
 			<div class="row">
 
-
 				<?php
 
 				include 'php/connection.php';
@@ -163,6 +165,12 @@
 					<?php
 					include 'php/connection.php';
 					$db = $con->query("select * from `bloglar` where bloglar.blog_id = $i");
+
+					if ($db->num_rows == 0) {
+						$toplamBlog = $toplamBlog + 1;
+						continue;
+					}
+
 					$sonuc = $db->fetch_assoc();
 					$blogresim = $sonuc['resim'];
 					$blogbaslik = $sonuc['baslik'];
@@ -177,7 +185,7 @@
 					?>
 
 					<div class="col-lg-6 col-md-6 single-blog">
-						<img class="img-fluid" src="img/<?php echo $blogresim ?>" alt="">
+						<img class="img-fluid" style="width: 510px; height: 300px;" <?php if ($blogresim == "b1.jpg" || $blogresim == "b2.jpg") { ?> src="img/<?php echo $blogresim ?>" <?php } else { ?> src="<?php echo $blogresim ?>" <?php } ?> alt="">
 						<ul class="post-tags">
 							<li><a><?php echo $blogyazarAdi ?></a></li>
 						</ul>

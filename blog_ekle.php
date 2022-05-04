@@ -93,16 +93,34 @@
         <div class="container">
             <div class="row fullscreen d-flex align-items-center justify-content-start">
                 <div class="banner-content col-lg-7">
-                    <h6 class="text-white text-uppercase">Now you can feel the Energy</h6>
+
                     <h1>
                         Blog Ekle
                     </h1>
+
+                    <?php
+                    include 'php/connection.php';
+                    $currentUserName = $con->query("SELECT kullanici.kullanici_adi FROM `kullanici` WHERE kullanici.kullanici_id = '$currentUserID'");
+                    $result = $currentUserName->fetch_assoc();
+                    $result = $result['kullanici_adi'];
+                    ?>
+
+
 
                     <div class="col-lg-12 col-md-8">
 
                         <br><br><br>
 
-                        <form action="" onsubmit={validation()} method="POST">
+                        <!-- onsubmit={validation()} -->
+                        <form action="php/blogEkle.php" method="POST">
+
+                            <h3 style="color:white;">Yazar : </h3>
+
+                            <div class="mt-10">
+                                <input type="text" id="blogYazarName" name="blogYazarName" placeholder=" <?php echo $result ?>" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $result ?>'" required class="single-input-primary" value="<?php echo $result ?>">
+                            </div>
+
+                            <br>
 
                             <div class="mt-10">
                                 <input type="text" id="blogResim" name="blogResim" placeholder="Blog Resim URL" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Blog Resim URL'" required class="single-input-primary">
@@ -111,7 +129,7 @@
                             <br>
 
                             <div class="switch-wrap d-flex justify-content-between">
-                                <p style="color:white;">Varsayılan blog resmini kullan.</p>
+                                <p style="color:white">Varsayılan blog resmini kullan.</p>
                                 <div class="primary-switch">
                                     <input type="checkbox" id="primary-switch" onchange="onChangeHandler()">
                                     <label for="primary-switch"></label>
@@ -164,6 +182,9 @@
 
         <script>
             function validation() {
+
+                document.getElementById("blogYazarName").disabled = false;
+
                 if (document.getElementById("blogBaslik").value.length == 0) {
                     alert("Blog başlık bilgisi boş olamaz !!");
                     return false;
@@ -180,7 +201,7 @@
                 var checkboxStatus = document.getElementById("primary-switch").checked;
                 if (checkboxStatus == true) {
                     document.getElementById("blogResim").value = "Varsayılan blog resmi...";
-                    document.getElementById("blogResim").disabled = true;
+                    //       document.getElementById("blogResim").disabled = true;
 
                 } else {
                     document.getElementById("blogResim").value = "";
