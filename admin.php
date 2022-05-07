@@ -136,7 +136,7 @@
 	<!-- Start Generic Area -->
 	<section class="about-generic-area section-gap">
 		<div class="container border-top-generic">
-			<h3 class="about-title mb-30">Kullanıcılar</h3>
+			<h3 class="about-title mb-30" style="text-align:center">Kullanıcılar</h3>
 			<div class="row">
 
 				<div class="col-lg-12 col-md-8">
@@ -150,14 +150,10 @@
 							<input type="password" id="sifre" name="sifre" placeholder="Şifre" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Şifre'" required class="single-input-primary">
 						</div>
 
-
-
 						<input type="submit" id="btn" class="genric-btn primary circle" value="Kullanıcı Ekle" />
-
 
 					</form>
 				</div>
-
 
 
 				<div class="col-lg-12 col-md-8">
@@ -177,22 +173,71 @@
 
 					</div>
 
-					<div class="row">
+					<?php
 
-						<div class="mt-10 col-lg-4">
-							<input type="text" id="kullaniciAdi" name="kullaniciAdi" placeholder="Kullanıcı Adı" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Kullanıcı Adı'" required class="single-input-primary">
+					include('php/connection.php');
+					$totalUser = $con->query("select COUNT(kullanici.kullanici_id) from `kullanici`");
+					$sonuc = $totalUser->fetch_assoc();
+					$totalUser = $sonuc['COUNT(kullanici.kullanici_id)'];
+
+					?>
+
+					<?php
+
+					for ($i = 0; $i < $totalUser; $i++) {
+					?>
+
+						<?php
+
+						include 'php/connection.php';
+						$db = $con->query("select * from `kullanici` where kullanici.kullanici_id =  $i");
+						$sonuc = $db->fetch_assoc();
+
+						if ($db->num_rows == 0) {
+							$totalUser = $totalUser + 1;
+							continue;
+						}
+
+						$kullaniciAdi = $sonuc['kullanici_adi'];
+						$sifre = $sonuc['sifre'];
+						?>
+
+						<br>
+						<div class="row">
+
+							<div class="mt-10 col-lg-5">
+								<input type="text" id="kullaniciAdi" name="kullaniciAdi" placeholder="<?php echo $kullaniciAdi ?>" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $kullaniciAdi ?>'" required class="single-input-primary" value="<?php echo $kullaniciAdi ?>" disabled>
+							</div>
+
+							<div class="mt-10 col-lg-5">
+								<input type="text" id="sifre" name="sifre" placeholder="<?php echo $sifre ?>" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $sifre ?>'" required class="single-input-primary" value="<?php echo $sifre ?>" disabled>
+							</div>
+
+							<input type="submit" id="btn" class="genric-btn primary circle" value="X" />
+
+
+
 						</div>
 
-						<div class="mt-10 col-lg-4">
-							<input type="password" id="sifre" name="sifre" placeholder="Şifre" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Şifre'" required class="single-input-primary">
-						</div>
 
-						<input type="submit" id="btn" class="genric-btn primary circle" value="X" />
 
-					</div>
+					<?php } ?>
+
+
+
 
 					<br><br><br><br><br>
+					<?php
+					$totalUser = $con->query("select COUNT(kullanici.kullanici_id) from `kullanici`");
+					$sonuc = $totalUser->fetch_assoc();
+					$totalUser = $sonuc['COUNT(kullanici.kullanici_id)'];
+					?>
+					<h3>Toplam Kullanıcı : <?php echo $totalUser ?></h3>
+					<br><br><br><br><br>
+
+
 				</div>
+
 
 
 
@@ -201,6 +246,29 @@
 		</div>
 	</section>
 	<!-- End Generic Start -->
+
+	<section class="about-generic-area section-gap">
+		<div class="container border-top-generic">
+			<h3 class="about-title mb-30" style="text-align:center">Yorumlar</h3>
+			<div class="row">
+
+
+			</div>
+		</div>
+	</section>
+	<!-- End Generic Start -->
+
+	<section class="about-generic-area section-gap">
+		<div class="container border-top-generic">
+			<h3 class="about-title mb-30" style="text-align:center">Bloglar</h3>
+			<div class="row">
+
+
+			</div>
+		</div>
+	</section>
+	<!-- End Generic Start -->
+
 
 	<script src="js/vendor/jquery-2.2.4.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
