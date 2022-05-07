@@ -133,6 +133,75 @@
 	</section>
 	<!-- End review Area -->
 
+	<!-- Start Generic Area -->
+	<section class="about-generic-area section-gap">
+		<div class="container border-top-generic">
+			<h3 class="about-title mb-30">Kullanıcılar</h3>
+			<div class="row">
+
+				<div class="col-lg-12 col-md-8">
+					<form action="" onsubmit={validation()} method="POST">
+
+						<div class="mt-10">
+							<input type="text" id="kullaniciAdi" name="kullaniciAdi" placeholder="Kullanıcı Adı" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Kullanıcı Adı'" required class="single-input-primary">
+						</div>
+
+						<div class="mt-10">
+							<input type="password" id="sifre" name="sifre" placeholder="Şifre" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Şifre'" required class="single-input-primary">
+						</div>
+
+
+
+						<input type="submit" id="btn" class="genric-btn primary circle" value="Kullanıcı Ekle" />
+
+
+					</form>
+				</div>
+
+
+
+				<div class="col-lg-12 col-md-8">
+
+					<hr>
+
+					<div class="row">
+
+						<div class="mt-10 col-lg-4">
+							<input type="text" id="kullaniciAdi" name="kullaniciAdi" placeholder="Kullanıcı Adı" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Kullanıcı Adı'" required class="single-input-primary" disabled>
+						</div>
+
+						<div class="mt-10 col-lg-4">
+							<input type="password" id="sifre" name="sifre" placeholder="Şifre" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Şifre'" required class="single-input-primary" disabled>
+						</div>
+
+
+					</div>
+
+					<div class="row">
+
+						<div class="mt-10 col-lg-4">
+							<input type="text" id="kullaniciAdi" name="kullaniciAdi" placeholder="Kullanıcı Adı" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Kullanıcı Adı'" required class="single-input-primary">
+						</div>
+
+						<div class="mt-10 col-lg-4">
+							<input type="password" id="sifre" name="sifre" placeholder="Şifre" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Şifre'" required class="single-input-primary">
+						</div>
+
+						<input type="submit" id="btn" class="genric-btn primary circle" value="X" />
+
+					</div>
+
+					<br><br><br><br><br>
+				</div>
+
+
+
+				<h1>kullanıcı tablosu !</h1>
+			</div>
+		</div>
+	</section>
+	<!-- End Generic Start -->
+
 	<script src="js/vendor/jquery-2.2.4.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="js/vendor/bootstrap.min.js"></script>
@@ -150,6 +219,27 @@
 	<script src="js/jquery.counterup.min.js"></script>
 	<script src="js/mail-script.js"></script>
 	<script src="js/main.js"></script>
+
+	<script>
+		function validation() {
+			var id = document.f1.user.value;
+			var ps = document.f1.pass.value;
+			if (id.length == "" && ps.length == "") {
+				alert("User Name and Password fields are empty");
+				return false;
+			} else {
+				if (id.length == "") {
+					alert("User Name is empty");
+					return false;
+				}
+				if (ps.length == "") {
+					alert("Password field is empty");
+					return false;
+				}
+			}
+		}
+	</script>
+
 </body>
 
 </html>
