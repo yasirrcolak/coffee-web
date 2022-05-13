@@ -162,11 +162,11 @@
 
 					<div class="row">
 
-						<div class="mt-10 col-lg-4">
+						<div class="mt-10 col-lg-5">
 							<input type="text" id="kullaniciAdi" name="kullaniciAdi" placeholder="Kullanıcı Adı" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Kullanıcı Adı'" required class="single-input-primary" disabled>
 						</div>
 
-						<div class="mt-10 col-lg-4">
+						<div class="mt-10 col-lg-5">
 							<input type="password" id="sifre" name="sifre" placeholder="Şifre" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Şifre'" required class="single-input-primary" disabled>
 						</div>
 
