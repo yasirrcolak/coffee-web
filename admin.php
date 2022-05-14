@@ -133,14 +133,12 @@
 	</section>
 	<!-- End review Area -->
 
-	<!-- Start Generic Area -->
 	<section class="about-generic-area section-gap">
 		<div class="container border-top-generic">
-			<h3 class="about-title mb-30" style="text-align:center">Kullanıcılar</h3>
+			<h3 class="about-title mb-30" style="text-align:center">ADMİN EKLE</h3>
 			<div class="row">
-
 				<div class="col-lg-12 col-md-8">
-					<form action="" onsubmit={validation()} method="POST">
+					<form action="php/signup.php" onsubmit={validation()} method="POST">
 
 						<div class="mt-10">
 							<input type="text" id="kullaniciAdi" name="kullaniciAdi" placeholder="Kullanıcı Adı" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Kullanıcı Adı'" required class="single-input-primary">
@@ -150,17 +148,29 @@
 							<input type="password" id="sifre" name="sifre" placeholder="Şifre" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Şifre'" required class="single-input-primary">
 						</div>
 
-						<input type="submit" id="btn" class="genric-btn primary circle" value="Kullanıcı Ekle" />
+						<input type="hidden" name="tip" value="A">
+<br>
+						<input type="submit" id="btn" class="genric-btn primary circle" value="Ekle" />
 
 					</form>
 				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Generic Start -->
+
+	<!-- Start Generic Area -->
+	<section class="about-generic-area section-gap">
+		<div class="container border-top-generic">
+			<h3 class="about-title mb-30" style="text-align:center">Kullanıcılar</h3>
+			<div class="row">
 
 
 				<div class="col-lg-12 col-md-8">
 
 					<hr>
 
-					<div class="row">
+					<div style="background-color:#b68834;" class="row">
 
 						<div class="mt-10 col-lg-5">
 							<input type="text" id="kullaniciAdi" name="kullaniciAdi" placeholder="Kullanıcı Adı" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Kullanıcı Adı'" required class="single-input-primary" disabled>
@@ -203,45 +213,34 @@
 						?>
 
 						<br>
+
+						<form action="php/kullaniciSil.php" onsubmit = {validation()} method="POST">
+
 						<div class="row">
 
 							<div class="mt-10 col-lg-5">
-								<input type="text" id="kullaniciAdi" name="kullaniciAdi" placeholder="<?php echo $kullaniciAdi ?>" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $kullaniciAdi ?>'" required class="single-input-primary" value="<?php echo $kullaniciAdi ?>" disabled>
+								<input type="text" id="kullaniciAdi" name="kullaniciAdi" placeholder="<?php echo $kullaniciAdi ?>" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $kullaniciAdi ?>'" required class="single-input-primary" value="<?php echo $kullaniciAdi ?>" >
 							</div>
 
 							<div class="mt-10 col-lg-5">
 								<input type="text" id="sifre" name="sifre" placeholder="<?php echo $sifre ?>" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $sifre ?>'" required class="single-input-primary" value="<?php echo $sifre ?>" disabled>
 							</div>
 
+							<input type="hidden" name="adminID" value="<?php echo $currentUserID ?>">
 							<input type="submit" id="btn" class="genric-btn primary circle" value="X" />
 
 
 
-						</div>
+						</div></form>
+
 
 
 
 					<?php } ?>
 
 
-
-
-					<br><br><br><br><br>
-					<?php
-					$totalUser = $con->query("select COUNT(kullanici.kullanici_id) from `kullanici`");
-					$sonuc = $totalUser->fetch_assoc();
-					$totalUser = $sonuc['COUNT(kullanici.kullanici_id)'];
-					?>
-					<h3>Toplam Kullanıcı : <?php echo $totalUser ?></h3>
-					<br><br><br><br><br>
-
-
 				</div>
 
-
-
-
-				<h1>kullanıcı tablosu !</h1>
 			</div>
 		</div>
 	</section>
@@ -251,9 +250,102 @@
 		<div class="container border-top-generic">
 			<h3 class="about-title mb-30" style="text-align:center">Yorumlar</h3>
 			<div class="row">
+				<div class="col-lg-12 col-md-8">
+					<div style="background-color:#b68834;" class="row">
 
 
+						<div class="mt-10 col-lg-4">
+							<input type="text" placeholder="Kullanıcı" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Kullanıcı'" required class="single-input-primary" disabled>
+						</div>
+
+						<div class="mt-10 col-lg-4">
+							<input type="text" placeholder="Yorum" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Yorum'" required class="single-input-primary" disabled>
+						</div>
+
+						<div class="mt-10 col-lg-2">
+							<input type="text" placeholder="Blog" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Blog'" required class="single-input-primary" disabled>
+						</div>
+
+					</div>
+
+
+					<?php
+
+					include('php/connection.php');
+					$totalYorum = $con->query("select COUNT(yorum.yorum_id) from `yorum`");
+					$sonuc = $totalYorum->fetch_assoc();
+					$totalYorum = $sonuc['COUNT(yorum.yorum_id)'];
+
+					?>
+
+					<?php
+
+					for ($i = 1; $i <= $totalYorum; $i++) {
+
+						include 'php/connection.php';
+						$db = $con->query("select * from `yorum` where yorum.yorum_id =  $i");
+						$sonuc = $db->fetch_assoc();
+
+						if ($db->num_rows == 0) {
+							$totalYorum = $totalYorum + 1;
+							continue;
+						}
+
+						$kullaniciID = $sonuc['kullanici_id'];
+						$yorum = $sonuc['mesaj'];
+						$blogID = $sonuc['blog_id'];
+
+
+
+						$result = $con->query("SELECT kullanici.kullanici_adi FROM `kullanici` WHERE kullanici.kullanici_id = '$kullaniciID'");
+						$kullaniciAdi = $result->fetch_assoc();
+						$kullaniciAdi = $kullaniciAdi['kullanici_adi'];
+
+						$result = $con->query("SELECT bloglar.baslik FROM `bloglar` WHERE bloglar.blog_id = '$blogID'");
+						$blogAdi = $result->fetch_assoc();
+						$blogAdi = $blogAdi['baslik'];
+
+
+						// php kapat ekrana bas.
+
+
+					?>
+
+						<br>
+						<div class="row">
+
+							<div class="mt-10 col-lg-4">
+								<input type="text" placeholder="<?php echo $kullaniciAdi ?>" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $kullaniciAdi ?>'" required class="single-input-primary" value="<?php echo $kullaniciAdi ?>" disabled>
+							</div>
+
+							<div class="mt-10 col-lg-4">
+								<input type="text" placeholder="<?php echo $yorum ?>" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $yorum ?>'" required class="single-input-primary" value="<?php echo $yorum ?>" disabled>
+							</div>
+
+							<div class="mt-10 col-lg-2">
+								<input type="text" placeholder="<?php echo $blogAdi ?>" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $blogAdi ?>'" required class="single-input-primary" value="<?php echo $blogAdi ?>" disabled>
+							</div>
+
+							<input type="submit" id="btn" class="genric-btn primary circle" value="X" />
+
+						</div>
+
+
+
+					<?php
+
+					}
+
+
+					?>
+
+
+				</div>
 			</div>
+
+
+
+		</div>
 		</div>
 	</section>
 	<!-- End Generic Start -->
@@ -261,10 +353,84 @@
 	<section class="about-generic-area section-gap">
 		<div class="container border-top-generic">
 			<h3 class="about-title mb-30" style="text-align:center">Bloglar</h3>
+
 			<div class="row">
+				<div class="col-lg-12 col-md-8">
+					<div style="background-color:#b68834;" class="row">
 
 
+						<div class="mt-10 col-lg-5">
+							<input type="text" placeholder="Blog Başlık" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Blog Başlık'" required class="single-input-primary" disabled>
+						</div>
+
+						<div class="mt-10 col-lg-5">
+							<input type="text" placeholder="Tarih" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Tarih'" required class="single-input-primary" disabled>
+						</div>
+					</div>
+
+
+					<?php
+
+					include('php/connection.php');
+					$totalBlog = $con->query("select COUNT(bloglar.blog_id) from `bloglar`");
+					$sonuc = $totalBlog->fetch_assoc();
+					$totalBlog = $sonuc['COUNT(bloglar.blog_id)'];
+
+					?>
+
+					<?php
+
+					for ($i = 1; $i <= $totalBlog; $i++) {
+
+						include 'php/connection.php';
+						$db = $con->query("select * from `bloglar` where bloglar.blog_id =  $i");
+						$sonuc = $db->fetch_assoc();
+
+						if ($db->num_rows == 0) {
+							$totalBlog = $totalBlog + 1;
+							continue;
+						}
+
+						$blogAdi = $sonuc['baslik'];
+						$tarih = $sonuc['tarihSaat'];
+
+
+						// php kapat ekrana bas.
+
+
+					?>
+
+						<br>
+						<div class="row">
+
+							<div class="mt-10 col-lg-5">
+								<input type="text" placeholder="<?php echo $blogAdi ?>" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $blogAdi ?>'" required class="single-input-primary" value="<?php echo $blogAdi ?>" disabled>
+							</div>
+
+							<div class="mt-10 col-lg-5">
+								<input type="text" placeholder="<?php echo $tarih ?>" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $tarih ?>'" required class="single-input-primary" value="<?php echo $tarih ?>" disabled>
+							</div>
+
+							<input type="submit" id="btn" class="genric-btn primary circle" value="X" />
+
+						</div>
+
+
+
+					<?php
+
+					}
+
+
+					?>
+
+
+				</div>
 			</div>
+
+
+
+		</div>
 		</div>
 	</section>
 	<!-- End Generic Start -->

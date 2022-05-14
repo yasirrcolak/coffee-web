@@ -1765,7 +1765,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .default-select {
-  height: 40px;
+  height: 80px;
 }
 
 .default-select .nice-select {
@@ -1799,13 +1799,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .default-select .nice-select .list .option.selected {
-  color: #b68834;
+  color: #fda400;
   background: transparent;
 }
 
 .default-select .nice-select .list .option:hover {
-  color: #b68834;
-  background: transparent;
+  color: white;
+  background: #b68834;
 }
 
 .default-select .current {

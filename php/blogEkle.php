@@ -13,7 +13,9 @@ $sonuc = $currentUserID->fetch_assoc();
 $currentUserID = $sonuc['kullanici_id'];
 
 // tarih saat bilgisi. 
-$tarihSaat = date("Y-m-d h:i:s");
+
+date_default_timezone_set('Europe/Istanbul');
+$tarihSaat= date("Y-m-d H:i:s"); // ayarlı zaman
 
 // resim için gelen değeri kontrol et eğer varsayılan ise atama yap.
 if ($resim == "Varsayılan blog resmi...") {

@@ -185,9 +185,9 @@
 
 
                         include 'php/connection.php';
-                        $db = $con->query("select COUNT(yorum_id) from `yorum` where yorum.blog_id ='$currentBlogID'");
+                        $db = $con->query("select COUNT(yorum.yorum_id) from `yorum` where yorum.blog_id=$currentBlogID");
                         $sonuc = $db->fetch_assoc();
-                        $toplamYorum = $sonuc['COUNT(yorum_id)'];
+                        $toplamYorum = $sonuc['COUNT(yorum.yorum_id)'];
 
                         ?>
 
@@ -202,37 +202,47 @@
 
                         } else {
 
+
                             for ($i = 1; $i <= $toplamYorum; $i++) {
                             ?>
 
                                 <?php
+
                                 include 'php/connection.php';
-                                $db = $con->query("select * from `yorum` where yorum.yorum_id =  $i");
+                                $db = $con->query("select * from `yorum` where yorum.yorum_id=  $i");
                                 $sonuc = $db->fetch_assoc();
-                                $yorumYazarID = $sonuc['kullanici_id'];
-                                $yorumMesaj = $sonuc['mesaj'];
-                                $yorumYildiz = $sonuc['yildiz'];
 
-                                $db = $con->query("SELECT kullanici.kullanici_adi FROM `kullanici` WHERE kullanici.kullanici_id = '$yorumYazarID'");
-                                $sonuc = $db->fetch_assoc();
-                                $yorumYazarAdi = $sonuc['kullanici_adi'];
-                                ?>
+                                if($sonuc['blog_id'] == $currentBlogID){
 
-                                <div class="col-lg-12">
-                                    <div class="single-menu">
-                                        <div class="title-div justify-content-between d-flex">
-                                            <h4><?php echo $yorumYazarAdi ?></h4>
-                                            <p class="price float-right">
-                                                <i class="fa fa-star" aria-hidden="true"></i> <?php echo $yorumYildiz ?>
+                                    $yorumYazarID = $sonuc['kullanici_id'];
+                                    $yorumMesaj = $sonuc['mesaj'];
+                                    $yorumYildiz = $sonuc['yildiz'];
+    
+                                    $db = $con->query("SELECT kullanici.kullanici_adi FROM `kullanici` WHERE kullanici.kullanici_id = '$yorumYazarID'");
+                                    $sonuc = $db->fetch_assoc();
+                                    $yorumYazarAdi = $sonuc['kullanici_adi'];
+                                    ?>
+    
+                                    <div class="col-lg-12">
+                                        <div class="single-menu">
+                                            <div class="title-div justify-content-between d-flex">
+                                                <h4><?php echo $yorumYazarAdi ?></h4>
+                                                <p class="price float-right">
+                                                    <i class="fa fa-star" aria-hidden="true"></i> <?php echo $yorumYildiz ?>
+                                                </p>
+                                            </div>
+                                            <p>
+                                                <?php echo $yorumMesaj ?>
                                             </p>
                                         </div>
-                                        <p>
-                                            <?php echo $yorumMesaj ?>
-                                        </p>
                                     </div>
-                                </div>
 
-                        <?php
+                                    <?php                                    
+                                }
+                                else{
+
+
+                                }
                             }
                         }
                         ?>
@@ -259,15 +269,33 @@
                     } else {
                     ?>
 
-                        <form action="" onsubmit={validation()} method="POST">
+                        <form action="php/yorumEkle.php" onsubmit={validation()} method="POST">
 
                             <div class="mt-10">
                                 <input type="text" id="yorum" name="yorum" placeholder="Yorum ekleyin..." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Yorum ekleyin...'" required class="single-input-primary">
                             </div>
 
                             <br>
+                            <h5 class="mb-30">Yıldız</h5>
+                            <div class="default-select" id="default-select">
+                                <select name="yildiz">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
+
+
+                            <input type="hidden" name="kullaniciID" value="<?php echo $currentUserID ?>">
+                            <input type="hidden" name="blogID" value="<?php echo $currentBlogID ?>">
+
 
                             <input type="submit" id="btn" class="genric-btn primary circle" value="Yorum Yap" />
+
+
+
 
                         </form>
 
