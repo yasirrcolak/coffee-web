@@ -126,7 +126,7 @@
 				</div>
 				<div class="col-lg-3 col-md-6 single-counter">
 					<h1 class="counter">10536</h1>
-					<p>Total Submitted</p>
+					<p>deneme</p>
 				</div>
 			</div>
 		</div>
