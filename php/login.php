@@ -50,5 +50,6 @@
 
         }  
         else{  
+          header("Location: https://localhost/coffee-web/login.html");
             echo "<h1> Login failed. Invalid username or password.</h1>";  
         }

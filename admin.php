@@ -49,7 +49,7 @@
 		<div class="container">
 			<div class="row align-items-center justify-content-between d-flex">
 				<div id="logo">
-					<a href="index.php?kullanici=<?php echo $currentUserID ?>"><img src="img/logo.png" alt="" title="" /></a>
+					<a href="index.php?kullanici=<?php echo $currentUserID ?>"><img src="img/logo2.png" alt="" title="" /></a>
 				</div>
 				<nav id="nav-menu-container">
 					<ul class="nav-menu">
@@ -124,10 +124,17 @@
 					<h1 class="counter"><?php echo $toplamYorum ?></h1>
 					<p>Toplam Yorum</p>
 				</div>
-				<div class="col-lg-3 col-md-6 single-counter">
-					<h1 class="counter">10536</h1>
-					<p>deneme</p>
-				</div>
+				<?php
+					include 'php/connection.php';
+					$db = $con->query("SELECT SUM(yorum.yildiz) FROM `yorum`");
+					$sonuc = $db->fetch_assoc();
+					$toplamYildiz = $sonuc['SUM(yorum.yildiz)'];
+					?>
+
+					<div class="col-lg-3 col-md-6 single-counter">
+						<h1 class="counter"><?php echo $toplamYildiz ?></h1>
+						<p>Toplam Yıldız</p>
+					</div>
 			</div>
 		</div>
 	</section>
@@ -312,6 +319,7 @@
 					?>
 
 						<br>
+						<form action="php/yorumSil.php" method="POST">
 						<div class="row">
 
 							<div class="mt-10 col-lg-4">
@@ -319,17 +327,19 @@
 							</div>
 
 							<div class="mt-10 col-lg-4">
-								<input type="text" placeholder="<?php echo $yorum ?>" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $yorum ?>'" required class="single-input-primary" value="<?php echo $yorum ?>" disabled>
+								<input type="text" name= "YorumMetni"placeholder="<?php echo $yorum ?>" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $yorum ?>'" required class="single-input-primary" value="<?php echo $yorum ?>" >
 							</div>
 
 							<div class="mt-10 col-lg-2">
 								<input type="text" placeholder="<?php echo $blogAdi ?>" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $blogAdi ?>'" required class="single-input-primary" value="<?php echo $blogAdi ?>" disabled>
 							</div>
 
+							<input type="hidden" name="adminID" value="<?php echo $currentUserID ?>">
+
 							<input type="submit" id="btn" class="genric-btn primary circle" value="X" />
 
 						</div>
-
+</form>
 
 
 					<?php
@@ -401,20 +411,27 @@
 					?>
 
 						<br>
+							<form action="php/blogSil.php" onsubmit = {validation()} method="POST">
 						<div class="row">
 
+					
+
 							<div class="mt-10 col-lg-5">
-								<input type="text" placeholder="<?php echo $blogAdi ?>" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $blogAdi ?>'" required class="single-input-primary" value="<?php echo $blogAdi ?>" disabled>
+								<input type="text" name="blogName" placeholder="<?php echo $blogAdi ?>" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $blogAdi ?>'" required class="single-input-primary" value="<?php echo $blogAdi ?>" >
 							</div>
 
 							<div class="mt-10 col-lg-5">
 								<input type="text" placeholder="<?php echo $tarih ?>" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $tarih ?>'" required class="single-input-primary" value="<?php echo $tarih ?>" disabled>
 							</div>
 
+							<input type="hidden" name="adminID" value="<?php echo $currentUserID ?>">
+
 							<input type="submit" id="btn" class="genric-btn primary circle" value="X" />
 
-						</div>
 
+
+						</div>
+</form>
 
 
 					<?php

@@ -1,5 +1,5 @@
 	<!DOCTYPE html>
-	<html lang="zxx" class="no-js">
+	<html lang="tr" class="no-js">
 
 	<head>
 		<!-- Mobile Specific Meta -->
@@ -50,17 +50,7 @@
 				<div class="container">
 					<div class="row justify-content-end">
 						<div class="col-lg-8 col-sm-4 col-8 header-top-right no-padding">
-							<ul>
-								<li>
-									Mon-Fri: 8am to 2pm
-								</li>
-								<li>
-									Sat-Sun: 11am to 4pm
-								</li>
-								<li>
-									<a href="tel:(012) 6985 236 7512">(012) 6985 236 7512</a>
-								</li>
-							</ul>
+
 						</div>
 					</div>
 				</div>
@@ -68,15 +58,10 @@
 			<div class="container">
 				<div class="row align-items-center justify-content-between d-flex">
 					<div id="logo">
-						<a href="index.php?kullanici=<?php echo $currentUserID ?>"><img src="img/logo.png" alt="" title="" /></a>
+						<a href="index.php?kullanici=<?php echo $currentUserID ?>"><img src="img/logo2.png" alt="" title="" /></a>
 					</div>
 					<nav id="nav-menu-container">
 						<ul class="nav-menu">
-							<li class="menu-active"><a href="#home">Home</a></li>
-							<li><a href="#about">About</a></li>
-							<li><a href="#coffee">Coffee</a></li>
-							<li><a href="#review">Review</a></li>
-							<li><a href="#blog">Blog</a></li>
 
 							<?php
 							include 'php/user.php';
@@ -89,7 +74,12 @@
 
 							?>
 
-							<li><a href="bloglar.php?kullanici=<?php echo $currentUserID ?>">Bloglar</a></li>
+							<li class="menu-active"><a href="index.php?kullanici=<?php echo $currentUserID ?>">Anasayfa</a></li>
+							<li><a href="#about">Hakkında</a></li>
+							<li><a href="#review">Önizleme</a></li>
+							<li><a href="#blog">Bloglar</a></li>
+
+
 
 							<?php
 							include 'php/user.php';
@@ -99,16 +89,6 @@
 							} else {
 								$currentUserID = -1;
 							}
-
-
-
-							/*
-							if(($_POST['user'])){
-								$currentUserID = -1;
-							}else{
-								$currentUserID = $_POST('user');
-							}
-*/
 
 							if ($currentUserID == -1) {
 							?>
@@ -160,12 +140,11 @@
 			<div class="container">
 				<div class="row fullscreen d-flex align-items-center justify-content-start">
 					<div class="banner-content col-lg-7">
-						<h6 class="text-white text-uppercase">Now you can feel the Energy</h6>
+						<h6 class="text-white text-uppercase">Şimdi enerjiyi hissedebilirsin</h6>
 						<h1>
-							Start your day with <br>
-							a black Coffee
+							Her güne <br>
+							bir kahve <br> ile başlayanlar
 						</h1>
-						<a href="#" class="primary-btn text-uppercase">Buy Now</a>
 					</div>
 				</div>
 			</div>
@@ -178,156 +157,25 @@
 				<div class="row justify-content-start align-items-center">
 					<div class="col-lg-6 video-right justify-content-center align-items-center d-flex">
 						<div class="overlay overlay-bg"></div>
-						<a class="play-btn" href="https://www.youtube.com/watch?v=ARA0AxrnHdM"><img class="img-fluid" src="img/play-icon.png" alt=""></a>
+						<a class="play-btn" href="https://www.youtube.com/watch?v=kUmQBw1C0dc"><img class="img-fluid" src="img/play-icon.png" alt=""></a>
 					</div>
 					<div class="col-lg-6 video-left">
-						<h6>Live Coffee making process.</h6>
-						<h1>We Telecast our <br>
-							Coffee Making Live</h1>
-						<p><span>We are here to listen from you deliver exellence</span></p>
+						<h6>Kahve bir hayat tarzıdır. </h6>
+						<h1>Kahve Bağımlıları</h1>
+						<p><span>Kahve hakkında söyleyeceklerinizi dinlemek ve dinletmek için buradayız.</span></p>
 						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temp or incididunt ut labore et dolore magna aliqua. Ut enim ad minim.
+                        Kahve bağımlılarının kahve ile ilgili söyleyecekleri her
+						şeyi yazıya dökerek kalıcı hale getirebildiği diğer bloglara 
+						yorumlar atıp yıldız verebildiği forum sitesi. 
 						</p>
-						<img class="img-fluid" src="img/signature.png" alt="">
+					
 					</div>
 				</div>
 			</div>
 		</section>
 		<!-- End video-sec Area -->
 
-		<!-- Start menu Area -->
-		<section class="menu-area section-gap" id="coffee">
-			<div class="container">
-				<div class="row d-flex justify-content-center">
-					<div class="menu-content pb-60 col-lg-10">
-						<div class="title text-center">
-							<h1 class="mb-10">What kind of Coffee we serve for you</h1>
-							<p>Who are in extremely love with eco friendly system.</p>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-lg-4">
-						<div class="single-menu">
-							<div class="title-div justify-content-between d-flex">
-								<h4>Cappuccino</h4>
-								<p class="price float-right">
-									$49
-								</p>
-							</div>
-							<p>
-								Usage of the Internet is becoming more common due to rapid advance.
-							</p>
-						</div>
-					</div>
-					<div class="col-lg-4">
-						<div class="single-menu">
-							<div class="title-div justify-content-between d-flex">
-								<h4>Americano</h4>
-								<p class="price float-right">
-									$49
-								</p>
-							</div>
-							<p>
-								Usage of the Internet is becoming more common due to rapid advance.
-							</p>
-						</div>
-					</div>
-					<div class="col-lg-4">
-						<div class="single-menu">
-							<div class="title-div justify-content-between d-flex">
-								<h4>Espresso</h4>
-								<p class="price float-right">
-									$49
-								</p>
-							</div>
-							<p>
-								Usage of the Internet is becoming more common due to rapid advance.
-							</p>
-						</div>
-					</div>
-					<div class="col-lg-4">
-						<div class="single-menu">
-							<div class="title-div justify-content-between d-flex">
-								<h4>Macchiato</h4>
-								<p class="price float-right">
-									$49
-								</p>
-							</div>
-							<p>
-								Usage of the Internet is becoming more common due to rapid advance.
-							</p>
-						</div>
-					</div>
-					<div class="col-lg-4">
-						<div class="single-menu">
-							<div class="title-div justify-content-between d-flex">
-								<h4>Mocha</h4>
-								<p class="price float-right">
-									$49
-								</p>
-							</div>
-							<p>
-								Usage of the Internet is becoming more common due to rapid advance.
-							</p>
-						</div>
-					</div>
-					<div class="col-lg-4">
-						<div class="single-menu">
-							<div class="title-div justify-content-between d-flex">
-								<h4>Coffee Latte</h4>
-								<p class="price float-right">
-									$49
-								</p>
-							</div>
-							<p>
-								Usage of the Internet is becoming more common due to rapid advance.
-							</p>
-						</div>
-					</div>
-					<div class="col-lg-4">
-						<div class="single-menu">
-							<div class="title-div justify-content-between d-flex">
-								<h4>Piccolo Latte</h4>
-								<p class="price float-right">
-									$49
-								</p>
-							</div>
-							<p>
-								Usage of the Internet is becoming more common due to rapid advance.
-							</p>
-						</div>
-					</div>
-					<div class="col-lg-4">
-						<div class="single-menu">
-							<div class="title-div justify-content-between d-flex">
-								<h4>Ristretto</h4>
-								<p class="price float-right">
-									$49
-								</p>
-							</div>
-							<p>
-								Usage of the Internet is becoming more common due to rapid advance.
-							</p>
-						</div>
-					</div>
-					<div class="col-lg-4">
-						<div class="single-menu">
-							<div class="title-div justify-content-between d-flex">
-								<h4>Affogato</h4>
-								<p class="price float-right">
-									$49
-								</p>
-							</div>
-							<p>
-								Usage of the Internet is becoming more common due to rapid advance.
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!-- End menu Area -->
+
 
 		<!-- Start gallery Area -->
 		<section class="gallery-area section-gap" id="gallery">
@@ -335,8 +183,8 @@
 				<div class="row d-flex justify-content-center">
 					<div class="menu-content pb-60 col-lg-10">
 						<div class="title text-center">
-							<h1 class="mb-10">What kind of Coffee we serve for you</h1>
-							<p>Who are in extremely love with eco friendly system.</p>
+							<h1 class="mb-10">Her an her yerde kahve</h1>
+
 						</div>
 					</div>
 				</div>
@@ -377,42 +225,42 @@
 				<div class="row d-flex justify-content-center">
 					<div class="menu-content pb-60 col-lg-10">
 						<div class="title text-center">
-							<h1 class="mb-10">What kind of Coffee we serve for you</h1>
-							<p>Who are in extremely love with eco friendly system.</p>
+							<h1 class="mb-10">Sitemiz ile ilgili</h1>
+
 						</div>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-lg-6 col-md-6 single-review">
-						<img src="img/r1.png" alt="">
+
 						<div class="title d-flex flex-row">
-							<h4>lorem ipusm</h4>
+							<h4>Beyza</h4>
 							<div class="star">
 								<span class="fa fa-star checked"></span>
 								<span class="fa fa-star checked"></span>
 								<span class="fa fa-star checked"></span>
-								<span class="fa fa-star"></span>
-								<span class="fa fa-star"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
 							</div>
 						</div>
 						<p>
-							Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker. Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker.
+							Çook güzel bir web sitesi.
 						</p>
 					</div>
 					<div class="col-lg-6 col-md-6 single-review">
-						<img src="img/r2.png" alt="">
+
 						<div class="title d-flex flex-row">
-							<h4>lorem ipusm</h4>
+							<h4>Yasir</h4>
 							<div class="star">
 								<span class="fa fa-star checked"></span>
 								<span class="fa fa-star checked"></span>
-								<span class="fa fa-star"></span>
-								<span class="fa fa-star"></span>
-								<span class="fa fa-star"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
 							</div>
 						</div>
 						<p>
-							Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker. Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker.
+							Mükemmel bir site olmuş elimize sağlık.
 						</p>
 					</div>
 				</div>
@@ -453,9 +301,17 @@
 						<h1 class="counter"><?php echo $toplamYorum ?></h1>
 						<p>Toplam Yorum</p>
 					</div>
+
+					<?php
+					include 'php/connection.php';
+					$db = $con->query("SELECT SUM(yorum.yildiz) FROM `yorum`");
+					$sonuc = $db->fetch_assoc();
+					$toplamYildiz = $sonuc['SUM(yorum.yildiz)'];
+					?>
+
 					<div class="col-lg-3 col-md-6 single-counter">
-						<h1 class="counter">10536</h1>
-						<p>Total Submitted</p>
+						<h1 class="counter"><?php echo $toplamYildiz ?></h1>
+						<p>Toplam Yıldız</p>
 					</div>
 				</div>
 			</div>
@@ -468,8 +324,8 @@
 				<div class="row d-flex justify-content-center">
 					<div class="menu-content pb-60 col-lg-10">
 						<div class="title text-center">
-							<h1 class="mb-10">What kind of Coffee we serve for you</h1>
-							<p>Who are in extremely love with eco friendly system.</p>
+							<h1 class="mb-10">Bloglar</h1>
+							<p>Kahve Bağımlıları Tarafından Paylaşılan Kahve Hakkında Bilgi ve Deneyimler</p>
 						</div>
 					</div>
 				</div>
@@ -499,9 +355,7 @@
 						<a href="generic_blog.php?blog=1&kullanici=<?php echo $currentUserID ?>">
 							<h4><?php echo $blog1baslik ?></h4>
 						</a>
-						<p>
-							<?php echo $blog1icerik ?>
-						</p>
+
 						<p class="post-date">
 							<?php echo $blog1tarih ?>
 						</p>
@@ -524,16 +378,14 @@
 					?>
 
 					<div class="col-lg-6 col-md-6 single-blog">
-						<img class="img-fluid" src="img/<?php echo $blog2resim ?>" alt="">
+						<img class="img-fluid"style="width: 510px; height: 300px;" src="<?php echo $blog2resim ?>" alt="">
 						<ul class="post-tags">
 							<li><a><?php echo $blog2yazarAdi ?></a></li>
 						</ul>
 						<a href="generic_blog.php?blog=2&kullanici=<?php echo $currentUserID ?>">
 							<h4><?php echo $blog2baslik ?></h4>
 						</a>
-						<p>
-							<?php echo $blog2icerik ?>
-						</p>
+
 						<p class="post-date">
 							<?php echo $blog2tarih ?>
 						</p>
@@ -556,16 +408,14 @@
 					?>
 
 					<div class="col-lg-6 col-md-6 single-blog">
-						<img class="img-fluid" src="img/<?php echo $blog3resim ?>" alt="">
+						<img class="img-fluid"style="width: 510px; height: 300px;" src="<?php echo $blog3resim ?>" alt="">
 						<ul class="post-tags">
 							<li><a><?php echo $blog3yazarAdi ?></a></li>
 						</ul>
 						<a href="generic_blog.php?blog=3&kullanici=<?php echo $currentUserID ?>">
 							<h4><?php echo $blog3baslik ?></h4>
 						</a>
-						<p>
-							<?php echo $blog3icerik ?>
-						</p>
+
 						<p class="post-date">
 							<?php echo $blog2tarih ?>
 						</p>
@@ -588,19 +438,24 @@
 					?>
 
 					<div class="col-lg-6 col-md-6 single-blog">
-						<img class="img-fluid" src="img/<?php echo $blog4resim ?>" alt="">
+						<img class="img-fluid"style="width: 510px; height: 300px;" src="<?php echo $blog4resim ?>" alt="">
 						<ul class="post-tags">
 							<li><a><?php echo $blog4yazarAdi ?></a></li>
 						</ul>
 						<a href="generic_blog.php?blog=4&kullanici=<?php echo $currentUserID ?>">
 							<h4><?php echo $blog4baslik ?></h4>
 						</a>
-						<p>
-							<?php echo $blog4icerik ?>
-						</p>
+
 						<p class="post-date">
 							<?php echo $blog2tarih ?>
 						</p>
+					</div>
+
+					<div>
+						<br><br>
+						<a href="bloglar.php?kullanici=<?php echo $currentUserID ?>" class="genric-btn primary circle">Tüm Bloglar</a>
+
+
 					</div>
 
 				</div>
@@ -613,47 +468,13 @@
 		<footer class="footer-area section-gap">
 			<div class="container">
 				<div class="row">
-					<div class="col-lg-5 col-md-6 col-sm-6">
-						<div class="single-footer-widget">
-							<h6>About Us</h6>
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore dolore magna aliqua.
-							</p>
-							<p class="footer-text">
-								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-								Copyright &copy;<script>
-									document.write(new Date().getFullYear());
-								</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-							</p>
-						</div>
-					</div>
-					<div class="col-lg-5  col-md-6 col-sm-6">
-						<div class="single-footer-widget">
-							<h6>Newsletter</h6>
-							<p>Stay update with our latest</p>
-							<div class="" id="mc_embed_signup">
-								<form target="_blank" novalidate="true" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="form-inline">
-									<input class="form-control" name="EMAIL" placeholder="Enter Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Email '" required="" type="email">
-									<button class="click-btn btn btn-default"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
-									<div style="position: absolute; left: -5000px;">
-										<input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
-									</div>
 
-									<div class="info pt-20"></div>
-								</form>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-2 col-md-6 col-sm-6 social-widget">
+					<div class="col-lg-2 col-md-12 col-sm-12 social-widget">
 						<div class="single-footer-widget">
-							<h6>Follow Us</h6>
-							<p>Let us be social</p>
+							<h6>Bizi takip edin</h6>
+							<p>Sosyal medya hesaplarımız</p>
 							<div class="footer-social d-flex align-items-center">
-								<a href="#"><i class="fa fa-facebook"></i></a>
-								<a href="#"><i class="fa fa-twitter"></i></a>
-								<a href="#"><i class="fa fa-dribbble"></i></a>
-								<a href="#"><i class="fa fa-behance"></i></a>
+								<a href="https://www.linkedin.com/in/beyza-küçük-159007221" target="_blank"><i class="fa  fa-linkedin-square"></i></a>
 							</div>
 						</div>
 					</div>

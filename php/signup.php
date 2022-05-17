@@ -19,8 +19,6 @@ $maxid = $maxid['MAX(kullanici_id)'];
 $maxid = $maxid + 1;
 
 
-$maxid = $maxid->num_rows + 1;
-
 
 $sql = "INSERT INTO `kullanici`(`kullanici_id`, `kullanici_adi`, `sifre`, `tip`) VALUES ('$maxid','$username','$password','$tip')";
 $result = mysqli_query($con, $sql);
@@ -28,8 +26,8 @@ $result = mysqli_query($con, $sql);
 
 
 if ($result == 1) {
-    echo "<h1><center> Kayıt Başarılı <center></h1>";
     header("Location: https://localhost/coffee-web/login.html");
+
 } else {
     echo "<h1> Hata! Bi şey oldu? </h1>";
 }

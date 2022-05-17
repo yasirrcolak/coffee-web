@@ -140,7 +140,7 @@
                         <div class="generic-banner-content">
 
                             <h2 class="text-white"><?php echo $blogbaslik ?></h2>
-                            <p class="text-white"><?php echo $blogyazarAdi ?></p>
+                            <p style="text-transform:uppercase" class="text-white"><?php echo $blogyazarAdi ?></p>
                         </div>
                     </div>
                 </div>
@@ -154,7 +154,7 @@
             <!-- Start Generic Area -->
             <section class="about-generic-area section-gap">
                 <div class="container border-top-generic">
-                    <h3 class="about-title mb-30"><?php echo $blogtarih ?></h3>
+                   
                     <div class="row">
                         <div class="col-md-12">
                             <div class="img-text">
@@ -163,6 +163,7 @@
                             </div>
                         </div>
                     </div>
+                    <h3 class="about-title mb-30">Zaman: <?php echo $blogtarih ?></h3>
                 </div>
             </section>
             <!-- End Generic Start -->
@@ -212,13 +213,20 @@
                                 $db = $con->query("select * from `yorum` where yorum.yorum_id=  $i");
                                 $sonuc = $db->fetch_assoc();
 
+                                if($db->num_rows == 0){
+                                    $toplamYorum++;
+
+                                    continue;
+                                }
+
                                 if($sonuc['blog_id'] == $currentBlogID){
+
 
                                     $yorumYazarID = $sonuc['kullanici_id'];
                                     $yorumMesaj = $sonuc['mesaj'];
                                     $yorumYildiz = $sonuc['yildiz'];
     
-                                    $db = $con->query("SELECT kullanici.kullanici_adi FROM `kullanici` WHERE kullanici.kullanici_id = '$yorumYazarID'");
+                                    $db = $con->query("select kullanici.kullanici_adi from `kullanici` where kullanici.kullanici_id = '$yorumYazarID'");
                                     $sonuc = $db->fetch_assoc();
                                     $yorumYazarAdi = $sonuc['kullanici_adi'];
                                     ?>
@@ -240,6 +248,7 @@
                                     <?php                                    
                                 }
                                 else{
+                                    $toplamYorum++;
 
 
                                 }
@@ -317,58 +326,25 @@
             </section>
             <!-- End yorum Area -->
 
-            <!-- start footer Area -->
-            <footer class="footer-area section-gap">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-5 col-md-6 col-sm-6">
-                            <div class="single-footer-widget">
-                                <h6>About Us</h6>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore dolore magna aliqua.
-                                </p>
-                                <p class="footer-text">
-                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                    Copyright &copy;<script>
-                                        document.write(new Date().getFullYear());
-                                    </script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-lg-5  col-md-6 col-sm-6">
-                            <div class="single-footer-widget">
-                                <h6>Newsletter</h6>
-                                <p>Stay update with our latest</p>
-                                <div class="" id="mc_embed_signup">
-                                    <form target="_blank" novalidate="true" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="form-inline">
-                                        <input class="form-control" name="EMAIL" placeholder="Enter Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Email '" required="" type="email">
-                                        <button class="click-btn btn btn-default"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
-                                        <div style="position: absolute; left: -5000px;">
-                                            <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
-                                        </div>
+          
+		<!-- start footer Area -->
+		<footer class="footer-area section-gap">
+			<div class="container">
+				<div class="row">
 
-                                        <div class="info pt-20"></div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-6 col-sm-6 social-widget">
-                            <div class="single-footer-widget">
-                                <h6>Follow Us</h6>
-                                <p>Let us be social</p>
-                                <div class="footer-social d-flex align-items-center">
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-dribbble"></i></a>
-                                    <a href="#"><i class="fa fa-behance"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-            <!-- End footer Area -->
+					<div class="col-lg-2 col-md-12 col-sm-12 social-widget">
+						<div class="single-footer-widget">
+							<h6>Bizi takip edin</h6>
+							<p>Sosyal medya hesaplarımız</p>
+							<div class="footer-social d-flex align-items-center">
+								<a href="https://www.linkedin.com/in/beyza-küçük-159007221" target="_blank"><i class="fa  fa-linkedin-square"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!-- End footer Area -->
 
         <?php
 

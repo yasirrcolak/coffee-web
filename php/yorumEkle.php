@@ -12,7 +12,11 @@ $maxid = $maxid->fetch_assoc();
 $maxid = $maxid['MAX(yorum_id)'];
 $maxid = $maxid + 1;
 
-$sql = "INSERT INTO `yorum`(`yorum_id`, `kullanici_id`, `mesaj`, `yildiz`, `blog_id`) VALUES ('$maxid','$kullaniciID','$yorumMetni','$yildiz','$blogID')";
+$yazarID = $con->query("SELECT bloglar.kullanici_id FROM `bloglar` WHERE bloglar.blog_id='$blogID'");
+$sonuc = $yazarID->fetch_assoc();
+$yazarID = $sonuc['kullanici_id'];
+
+$sql = "INSERT INTO `yorum`(`yorum_id`, `kullanici_id`, `mesaj`, `yildiz`, `blog_id`, `yazar_id`) VALUES ('$maxid','$kullaniciID','$yorumMetni','$yildiz','$blogID','$yazarID')";
 $result = mysqli_query($con, $sql);
 
 if ($result == 1) {

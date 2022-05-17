@@ -48,7 +48,7 @@
         <div class="container">
             <div class="row align-items-center justify-content-between d-flex">
                 <div id="logo">
-                    <a href="index.php?kullanici=<?php echo $currentUserID ?>"><img src="img/logo.png" alt="" title="" /></a>
+                    <a href="index.php?kullanici=<?php echo $currentUserID ?>"><img src="img/logo2.png" alt="" title="" /></a>
                 </div>
                 <nav id="nav-menu-container">
                     <ul class="nav-menu">
@@ -93,7 +93,7 @@
         <div class="container">
             <div class="row fullscreen d-flex align-items-center justify-content-start">
                 <div class="banner-content col-lg-7">
-
+                    <br><br><br><br><br><br><br><br> <br><br><br>
                     <h1>
                         Blog Ekle
                     </h1>
@@ -109,7 +109,7 @@
 
                     <div class="col-lg-12 col-md-8">
 
-                        <br><br><br>
+                        <br>
 
                         <!-- onsubmit={validation()} -->
                         <form action="php/blogEkle.php" method="POST">
@@ -143,7 +143,7 @@
                             </div>
 
                             <div class="mt-10">
-                                <input type="text" id="blogIcerik" name="blogIcerik" placeholder="Blog İçerik Metni" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Blog içerik Metni'" required class="single-input-primary">
+                                <textarea name="blogIcerik" class="single-textarea" placeholder="Blog İçerik Metni" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Blog İçerik Metni'" required></textarea>
                             </div>
 
                             <hr>
