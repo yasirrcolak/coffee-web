@@ -5,7 +5,7 @@
 		<!-- Mobile Specific Meta -->
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<!-- Favicon-->
-		<link rel="shortcut icon" href="img/fav.png">
+		<link rel="shortcut icon" href="img/logo2.png">
 		<!-- Author Meta -->
 		<meta name="author" content="codepixer">
 		<!-- Meta Description -->
@@ -164,11 +164,11 @@
 						<h1>Kahve Bağımlıları</h1>
 						<p><span>Kahve hakkında söyleyeceklerinizi dinlemek ve dinletmek için buradayız.</span></p>
 						<p>
-                        Kahve bağımlılarının kahve ile ilgili söyleyecekleri her
-						şeyi yazıya dökerek kalıcı hale getirebildiği diğer bloglara 
-						yorumlar atıp yıldız verebildiği forum sitesi. 
+							Kahve bağımlılarının kahve ile ilgili söyleyecekleri her
+							şeyi yazıya dökerek kalıcı hale getirebildiği diğer bloglara
+							yorumlar atıp yıldız verebildiği forum sitesi.
 						</p>
-					
+
 					</div>
 				</div>
 			</div>
@@ -332,124 +332,49 @@
 				<div class="row">
 
 					<?php
-					include 'php/connection.php';
-					$db = $con->query("select * from `bloglar` where bloglar.blog_id = 1");
-					$sonuc = $db->fetch_assoc();
-					$blog1resim = $sonuc['resim'];
-					$blog1baslik = $sonuc['baslik'];
-					$blog1icerik = $sonuc['icerik'];
-					$blog1yazarID = $sonuc['kullanici_id'];
-					$blog1tarih = $sonuc['tarihSaat'];
-
-					$db = $con->query("SELECT kullanici.kullanici_adi FROM `kullanici` WHERE kullanici.kullanici_id = '$blog1yazarID'");
-					$sonuc = $db->fetch_assoc();
-					$blog1yazarAdi = $sonuc['kullanici_adi'];
-
+					$count = 4;
+					for ($i = 1; $i <= $count; $i++) {
 					?>
 
-					<div class="col-lg-6 col-md-6 single-blog">
-						<img class="img-fluid" src="img/<?php echo $blog1resim ?>" alt="">
-						<ul class="post-tags">
-							<li><a><?php echo $blog1yazarAdi ?></a></li>
-						</ul>
-						<a href="generic_blog.php?blog=1&kullanici=<?php echo $currentUserID ?>">
-							<h4><?php echo $blog1baslik ?></h4>
-						</a>
+						<?php
+						include 'php/connection.php';
+						$db = $con->query("select * from `bloglar` where bloglar.blog_id = $i");
 
-						<p class="post-date">
-							<?php echo $blog1tarih ?>
-						</p>
-					</div>
+						if ($db->num_rows == 0) {
+							$count = $count + 1;
+							continue;
+						}
+
+						$sonuc = $db->fetch_assoc();
+						$blogresim = $sonuc['resim'];
+						$blogbaslik = $sonuc['baslik'];
+						$blogicerik = $sonuc['icerik'];
+						$blogyazarID = $sonuc['kullanici_id'];
+						$blogtarih = $sonuc['tarihSaat'];
+
+						$db = $con->query("SELECT kullanici.kullanici_adi FROM `kullanici` WHERE kullanici.kullanici_id = '$blogyazarID'");
+						$sonuc = $db->fetch_assoc();
+						$blogyazarAdi = $sonuc['kullanici_adi'];
+
+						?>
+
+						<div class="col-lg-6 col-md-6 single-blog">
+							<img class="img-fluid" style="width: 510px; height: 300px;" <?php if ($blogresim == "b1.jpg" || $blogresim == "b2.jpg") { ?> src="img/<?php echo $blogresim ?>" <?php } else { ?> src="<?php echo $blogresim ?>" <?php } ?> alt="">
+							<ul class="post-tags">
+								<li><a><?php echo $blogyazarAdi ?></a></li>
+							</ul>
+							<a href="generic_blog.php?blog=4&kullanici=<?php echo $currentUserID ?>">
+								<h4><?php echo $blogbaslik ?></h4>
+							</a>
+
+							<p class="post-date">
+								<?php echo $blogtarih ?>
+							</p>
+						</div>
 
 					<?php
-					include 'php/connection.php';
-					$db = $con->query("select * from `bloglar` where bloglar.blog_id = 2");
-					$sonuc = $db->fetch_assoc();
-					$blog2resim = $sonuc['resim'];
-					$blog2baslik = $sonuc['baslik'];
-					$blog2icerik = $sonuc['icerik'];
-					$blog2yazarID = $sonuc['kullanici_id'];
-					$blog2tarih = $sonuc['tarihSaat'];
-
-					$db = $con->query("SELECT kullanici.kullanici_adi FROM `kullanici` WHERE kullanici.kullanici_id = '$blog2yazarID'");
-					$sonuc = $db->fetch_assoc();
-					$blog2yazarAdi = $sonuc['kullanici_adi'];
-
+					}
 					?>
-
-					<div class="col-lg-6 col-md-6 single-blog">
-						<img class="img-fluid"style="width: 510px; height: 300px;" src="<?php echo $blog2resim ?>" alt="">
-						<ul class="post-tags">
-							<li><a><?php echo $blog2yazarAdi ?></a></li>
-						</ul>
-						<a href="generic_blog.php?blog=2&kullanici=<?php echo $currentUserID ?>">
-							<h4><?php echo $blog2baslik ?></h4>
-						</a>
-
-						<p class="post-date">
-							<?php echo $blog2tarih ?>
-						</p>
-					</div>
-
-					<?php
-					include 'php/connection.php';
-					$db = $con->query("select * from `bloglar` where bloglar.blog_id = 3");
-					$sonuc = $db->fetch_assoc();
-					$blog3resim = $sonuc['resim'];
-					$blog3baslik = $sonuc['baslik'];
-					$blog3icerik = $sonuc['icerik'];
-					$blog3yazarID = $sonuc['kullanici_id'];
-					$blog3tarih = $sonuc['tarihSaat'];
-
-					$db = $con->query("SELECT kullanici.kullanici_adi FROM `kullanici` WHERE kullanici.kullanici_id = '$blog3yazarID'");
-					$sonuc = $db->fetch_assoc();
-					$blog3yazarAdi = $sonuc['kullanici_adi'];
-
-					?>
-
-					<div class="col-lg-6 col-md-6 single-blog">
-						<img class="img-fluid"style="width: 510px; height: 300px;" src="<?php echo $blog3resim ?>" alt="">
-						<ul class="post-tags">
-							<li><a><?php echo $blog3yazarAdi ?></a></li>
-						</ul>
-						<a href="generic_blog.php?blog=3&kullanici=<?php echo $currentUserID ?>">
-							<h4><?php echo $blog3baslik ?></h4>
-						</a>
-
-						<p class="post-date">
-							<?php echo $blog2tarih ?>
-						</p>
-					</div>
-
-					<?php
-					include 'php/connection.php';
-					$db = $con->query("select * from `bloglar` where bloglar.blog_id = 4");
-					$sonuc = $db->fetch_assoc();
-					$blog4resim = $sonuc['resim'];
-					$blog4baslik = $sonuc['baslik'];
-					$blog4icerik = $sonuc['icerik'];
-					$blog4yazarID = $sonuc['kullanici_id'];
-					$blog4tarih = $sonuc['tarihSaat'];
-
-					$db = $con->query("SELECT kullanici.kullanici_adi FROM `kullanici` WHERE kullanici.kullanici_id = '$blog4yazarID'");
-					$sonuc = $db->fetch_assoc();
-					$blog4yazarAdi = $sonuc['kullanici_adi'];
-
-					?>
-
-					<div class="col-lg-6 col-md-6 single-blog">
-						<img class="img-fluid"style="width: 510px; height: 300px;" src="<?php echo $blog4resim ?>" alt="">
-						<ul class="post-tags">
-							<li><a><?php echo $blog4yazarAdi ?></a></li>
-						</ul>
-						<a href="generic_blog.php?blog=4&kullanici=<?php echo $currentUserID ?>">
-							<h4><?php echo $blog4baslik ?></h4>
-						</a>
-
-						<p class="post-date">
-							<?php echo $blog2tarih ?>
-						</p>
-					</div>
 
 					<div>
 						<br><br>

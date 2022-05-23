@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="zxx" class="no-js">
+<html lang="tr" class="no-js">
 
 <head>
 	<!-- Mobile Specific Meta -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Favicon-->
-	<link rel="shortcut icon" href="img/fav.png">
+	<link rel="shortcut icon" href="img/logo2.png">
 	<!-- Author Meta -->
 	<meta name="author" content="codepixer">
 	<!-- Meta Description -->
@@ -143,7 +143,7 @@
 				<div class="menu-content pb-60 col-lg-10">
 					<div class="title text-center">
 						<h1 class="mb-10">Kahve Bağımlılarının Bilgi ve Deneyimleri</h1>
-						
+
 					</div>
 				</div>
 			</div>
@@ -192,7 +192,7 @@
 						<a href="generic_blog.php?blog=<?php echo $i ?>&kullanici=<?php echo $currentUserID ?>">
 							<h4><?php echo $blogbaslik ?></h4>
 						</a>
-						
+
 						<p class="post-date">
 							<?php echo $blogtarih ?>
 						</p>
@@ -210,22 +210,22 @@
 
 	<!-- start footer Area -->
 	<footer class="footer-area section-gap">
-			<div class="container">
-				<div class="row">
+		<div class="container">
+			<div class="row">
 
-					<div class="col-lg-2 col-md-12 col-sm-12 social-widget">
-						<div class="single-footer-widget">
-							<h6>Bizi takip edin</h6>
-							<p>Sosyal medya hesaplarımız</p>
-							<div class="footer-social d-flex align-items-center">
-								<a href="https://www.linkedin.com/in/beyza-küçük-159007221" target="_blank"><i class="fa  fa-linkedin-square"></i></a>
-							</div>
+				<div class="col-lg-2 col-md-12 col-sm-12 social-widget">
+					<div class="single-footer-widget">
+						<h6>Bizi takip edin</h6>
+						<p>Sosyal medya hesaplarımız</p>
+						<div class="footer-social d-flex align-items-center">
+							<a href="https://www.linkedin.com/in/beyza-küçük-159007221" target="_blank"><i class="fa  fa-linkedin-square"></i></a>
 						</div>
 					</div>
 				</div>
 			</div>
-		</footer>
-		<!-- End footer Area -->
+		</div>
+	</footer>
+	<!-- End footer Area -->
 	<script src="js/vendor/jquery-2.2.4.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="js/vendor/bootstrap.min.js"></script>

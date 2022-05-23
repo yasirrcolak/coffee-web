@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="zxx" class="no-js">
+<html lang="tr" class="no-js">
 
 <head>
     <!-- Mobile Specific Meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="img/elements/fav.png">
+    <link rel="shortcut icon" href="img/logo2.png">
     <!-- Author Meta -->
     <meta name="author" content="colorlib">
     <!-- Meta Description -->
@@ -102,11 +102,6 @@
                         }
                         ?>
 
-
-
-
-
-
                     </ul>
                 </nav><!-- #nav-menu-container -->
             </div>
@@ -154,7 +149,7 @@
             <!-- Start Generic Area -->
             <section class="about-generic-area section-gap">
                 <div class="container border-top-generic">
-                   
+
                     <div class="row">
                         <div class="col-md-12">
                             <div class="img-text">
@@ -213,24 +208,24 @@
                                 $db = $con->query("select * from `yorum` where yorum.yorum_id=  $i");
                                 $sonuc = $db->fetch_assoc();
 
-                                if($db->num_rows == 0){
+                                if ($db->num_rows == 0) {
                                     $toplamYorum++;
 
                                     continue;
                                 }
 
-                                if($sonuc['blog_id'] == $currentBlogID){
+                                if ($sonuc['blog_id'] == $currentBlogID) {
 
 
                                     $yorumYazarID = $sonuc['kullanici_id'];
                                     $yorumMesaj = $sonuc['mesaj'];
                                     $yorumYildiz = $sonuc['yildiz'];
-    
+
                                     $db = $con->query("select kullanici.kullanici_adi from `kullanici` where kullanici.kullanici_id = '$yorumYazarID'");
                                     $sonuc = $db->fetch_assoc();
                                     $yorumYazarAdi = $sonuc['kullanici_adi'];
-                                    ?>
-    
+                                ?>
+
                                     <div class="col-lg-12">
                                         <div class="single-menu">
                                             <div class="title-div justify-content-between d-flex">
@@ -245,12 +240,9 @@
                                         </div>
                                     </div>
 
-                                    <?php                                    
-                                }
-                                else{
+                        <?php
+                                } else {
                                     $toplamYorum++;
-
-
                                 }
                             }
                         }
@@ -326,25 +318,25 @@
             </section>
             <!-- End yorum Area -->
 
-          
-		<!-- start footer Area -->
-		<footer class="footer-area section-gap">
-			<div class="container">
-				<div class="row">
 
-					<div class="col-lg-2 col-md-12 col-sm-12 social-widget">
-						<div class="single-footer-widget">
-							<h6>Bizi takip edin</h6>
-							<p>Sosyal medya hesaplarımız</p>
-							<div class="footer-social d-flex align-items-center">
-								<a href="https://www.linkedin.com/in/beyza-küçük-159007221" target="_blank"><i class="fa  fa-linkedin-square"></i></a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</footer>
-		<!-- End footer Area -->
+            <!-- start footer Area -->
+            <footer class="footer-area section-gap">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-2 col-md-12 col-sm-12 social-widget">
+                            <div class="single-footer-widget">
+                                <h6>Bizi takip edin</h6>
+                                <p>Sosyal medya hesaplarımız</p>
+                                <div class="footer-social d-flex align-items-center">
+                                    <a href="https://www.linkedin.com/in/beyza-küçük-159007221" target="_blank"><i class="fa  fa-linkedin-square"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!-- End footer Area -->
 
         <?php
 

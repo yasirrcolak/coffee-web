@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="zxx" class="no-js">
+<html lang="tr" class="no-js">
 
 <head>
     <!-- Mobile Specific Meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="img/elements/fav.png">
+    <link rel="shortcut icon" href="img/logo2.png">
     <!-- Author Meta -->
     <meta name="author" content="colorlib">
     <!-- Meta Description -->

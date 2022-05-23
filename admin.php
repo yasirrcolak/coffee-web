@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="zxx" class="no-js">
+<html lang="tr" class="no-js">
 
 <head>
 	<!-- Mobile Specific Meta -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Favicon-->
-	<link rel="shortcut icon" href="img/fav.png">
+	<link rel="shortcut icon" href="img/logo2.png">
 	<!-- Author Meta -->
 	<meta name="author" content="codepixer">
 	<!-- Meta Description -->
@@ -125,16 +125,16 @@
 					<p>Toplam Yorum</p>
 				</div>
 				<?php
-					include 'php/connection.php';
-					$db = $con->query("SELECT SUM(yorum.yildiz) FROM `yorum`");
-					$sonuc = $db->fetch_assoc();
-					$toplamYildiz = $sonuc['SUM(yorum.yildiz)'];
-					?>
+				include 'php/connection.php';
+				$db = $con->query("SELECT SUM(yorum.yildiz) FROM `yorum`");
+				$sonuc = $db->fetch_assoc();
+				$toplamYildiz = $sonuc['SUM(yorum.yildiz)'];
+				?>
 
-					<div class="col-lg-3 col-md-6 single-counter">
-						<h1 class="counter"><?php echo $toplamYildiz ?></h1>
-						<p>Toplam Yıldız</p>
-					</div>
+				<div class="col-lg-3 col-md-6 single-counter">
+					<h1 class="counter"><?php echo $toplamYildiz ?></h1>
+					<p>Toplam Yıldız</p>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -156,7 +156,7 @@
 						</div>
 
 						<input type="hidden" name="tip" value="A">
-<br>
+						<br>
 						<input type="submit" id="btn" class="genric-btn primary circle" value="Ekle" />
 
 					</form>
@@ -221,24 +221,25 @@
 
 						<br>
 
-						<form action="php/kullaniciSil.php" onsubmit = {validation()} method="POST">
+						<form action="php/kullaniciSil.php" onsubmit={validation()} method="POST">
 
-						<div class="row">
+							<div class="row">
 
-							<div class="mt-10 col-lg-5">
-								<input type="text" id="kullaniciAdi" name="kullaniciAdi" placeholder="<?php echo $kullaniciAdi ?>" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $kullaniciAdi ?>'" required class="single-input-primary" value="<?php echo $kullaniciAdi ?>" >
+								<div class="mt-10 col-lg-5">
+									<input type="text" id="kullaniciAdi" name="kullaniciAdi" placeholder="<?php echo $kullaniciAdi ?>" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $kullaniciAdi ?>'" required class="single-input-primary" value="<?php echo $kullaniciAdi ?>">
+								</div>
+
+								<div class="mt-10 col-lg-5">
+									<input type="text" id="sifre" name="sifre" placeholder="<?php echo $sifre ?>" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $sifre ?>'" required class="single-input-primary" value="<?php echo $sifre ?>" disabled>
+								</div>
+
+								<input type="hidden" name="adminID" value="<?php echo $currentUserID ?>">
+								<input type="submit" id="btn" class="genric-btn primary circle" value="X" />
+
+
+
 							</div>
-
-							<div class="mt-10 col-lg-5">
-								<input type="text" id="sifre" name="sifre" placeholder="<?php echo $sifre ?>" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $sifre ?>'" required class="single-input-primary" value="<?php echo $sifre ?>" disabled>
-							</div>
-
-							<input type="hidden" name="adminID" value="<?php echo $currentUserID ?>">
-							<input type="submit" id="btn" class="genric-btn primary circle" value="X" />
-
-
-
-						</div></form>
+						</form>
 
 
 
@@ -320,26 +321,26 @@
 
 						<br>
 						<form action="php/yorumSil.php" method="POST">
-						<div class="row">
+							<div class="row">
 
-							<div class="mt-10 col-lg-4">
-								<input type="text" placeholder="<?php echo $kullaniciAdi ?>" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $kullaniciAdi ?>'" required class="single-input-primary" value="<?php echo $kullaniciAdi ?>" disabled>
+								<div class="mt-10 col-lg-4">
+									<input type="text" placeholder="<?php echo $kullaniciAdi ?>" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $kullaniciAdi ?>'" required class="single-input-primary" value="<?php echo $kullaniciAdi ?>" disabled>
+								</div>
+
+								<div class="mt-10 col-lg-4">
+									<input type="text" name="YorumMetni" placeholder="<?php echo $yorum ?>" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $yorum ?>'" required class="single-input-primary" value="<?php echo $yorum ?>">
+								</div>
+
+								<div class="mt-10 col-lg-2">
+									<input type="text" placeholder="<?php echo $blogAdi ?>" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $blogAdi ?>'" required class="single-input-primary" value="<?php echo $blogAdi ?>" disabled>
+								</div>
+
+								<input type="hidden" name="adminID" value="<?php echo $currentUserID ?>">
+
+								<input type="submit" id="btn" class="genric-btn primary circle" value="X" />
+
 							</div>
-
-							<div class="mt-10 col-lg-4">
-								<input type="text" name= "YorumMetni"placeholder="<?php echo $yorum ?>" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $yorum ?>'" required class="single-input-primary" value="<?php echo $yorum ?>" >
-							</div>
-
-							<div class="mt-10 col-lg-2">
-								<input type="text" placeholder="<?php echo $blogAdi ?>" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $blogAdi ?>'" required class="single-input-primary" value="<?php echo $blogAdi ?>" disabled>
-							</div>
-
-							<input type="hidden" name="adminID" value="<?php echo $currentUserID ?>">
-
-							<input type="submit" id="btn" class="genric-btn primary circle" value="X" />
-
-						</div>
-</form>
+						</form>
 
 
 					<?php
@@ -411,27 +412,27 @@
 					?>
 
 						<br>
-							<form action="php/blogSil.php" onsubmit = {validation()} method="POST">
-						<div class="row">
+						<form action="php/blogSil.php" onsubmit={validation()} method="POST">
+							<div class="row">
 
-					
 
-							<div class="mt-10 col-lg-5">
-								<input type="text" name="blogName" placeholder="<?php echo $blogAdi ?>" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $blogAdi ?>'" required class="single-input-primary" value="<?php echo $blogAdi ?>" >
+
+								<div class="mt-10 col-lg-5">
+									<input type="text" name="blogName" placeholder="<?php echo $blogAdi ?>" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $blogAdi ?>'" required class="single-input-primary" value="<?php echo $blogAdi ?>">
+								</div>
+
+								<div class="mt-10 col-lg-5">
+									<input type="text" placeholder="<?php echo $tarih ?>" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $tarih ?>'" required class="single-input-primary" value="<?php echo $tarih ?>" disabled>
+								</div>
+
+								<input type="hidden" name="adminID" value="<?php echo $currentUserID ?>">
+
+								<input type="submit" id="btn" class="genric-btn primary circle" value="X" />
+
+
+
 							</div>
-
-							<div class="mt-10 col-lg-5">
-								<input type="text" placeholder="<?php echo $tarih ?>" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $tarih ?>'" required class="single-input-primary" value="<?php echo $tarih ?>" disabled>
-							</div>
-
-							<input type="hidden" name="adminID" value="<?php echo $currentUserID ?>">
-
-							<input type="submit" id="btn" class="genric-btn primary circle" value="X" />
-
-
-
-						</div>
-</form>
+						</form>
 
 
 					<?php
