@@ -35,7 +35,8 @@ $result = mysqli_query($con, $sql);
 if ($result == 1) {
     echo "<h1><center> Kayıt Başarılı <center></h1>";
 
-    header("Location: https://localhost/coffee-web/bloglar.php?kullanici=$currentUserID");
+    header("Location: https://localhost/coffee-web/bloglar.php");
 } else {
     echo "<h1> Hata! Bi şey oldu? </h1>";
 }
+?>

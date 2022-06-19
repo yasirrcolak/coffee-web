@@ -18,17 +18,12 @@ $result3= $con->query("delete from `yorum` where yorum.yazar_id='$currentUserID'
 $result4= $con->query("delete from `bloglar` where bloglar.kullanici_id='$currentUserID'");
 
 // kullaniciya ait tüm yorum ve blogları sil.
-
 if($result1==1 && $result2==1 && $result3==1 && $result4==1){
 
-      header("Location: https://localhost/coffee-web/admin.php?kullanici=$adminID");
+      header("Location: https://localhost/coffee-web/admin.php");
 
 }
 else{
     echo "Silinemedi!";
 }
-
-
-
-
 ?>

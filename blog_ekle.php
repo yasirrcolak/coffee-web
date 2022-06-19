@@ -7,11 +7,9 @@
     <!-- Favicon-->
     <link rel="shortcut icon" href="img/logo2.png">
     <!-- Author Meta -->
-    <meta name="author" content="colorlib">
+    <meta name="author" content="">
     <!-- Meta Description -->
     <meta name="description" content="">
-    <!-- Meta Keyword -->
-    <meta name="keywords" content="">
     <!-- meta character set -->
     <meta charset="UTF-8">
     <!-- Site Title -->
@@ -31,18 +29,16 @@
 </head>
 
 <body>
-
     <header id="header" id="home">
 
         <?php
         include 'php/user.php';
 
-        if (isset($_GET['kullanici'])) {
-            $currentUserID = $_GET["kullanici"];
+        if (isset($_COOKIE["Id"])) {
+            $currentUserID = $_COOKIE["Id"];
         } else {
             $currentUserID = -1;
         }
-
         ?>
 
         <div class="container">
@@ -53,9 +49,9 @@
                 <nav id="nav-menu-container">
                     <ul class="nav-menu">
 
-
                         <li class="menu-active"><a href="index.php?kullanici=<?php echo $currentUserID ?>">Anasayfa</a></li>
                         <li class="menu-active"><a href="bloglar.php?kullanici=<?php echo $currentUserID ?>">Bloglar</a></li>
+
                         <?php
                         include 'php/connection.php';
                         $currentUserName = $con->query("SELECT kullanici.kullanici_adi FROM `kullanici` WHERE kullanici.kullanici_id = '$currentUserID'");
@@ -105,13 +101,9 @@
                     $result = $result['kullanici_adi'];
                     ?>
 
-
-
                     <div class="col-lg-12 col-md-8">
-
                         <br>
 
-                        <!-- onsubmit={validation()} -->
                         <form action="php/blogEkle.php" method="POST">
 
                             <h3 style="color:white;">Yazar : </h3>
@@ -162,8 +154,6 @@
     <!-- About Generic Start -->
     <div class="main-wrapper">
 
-
-
         <script src="js/vendor/jquery-2.2.4.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="js/vendor/bootstrap.min.js"></script>
@@ -201,8 +191,6 @@
                 var checkboxStatus = document.getElementById("primary-switch").checked;
                 if (checkboxStatus == true) {
                     document.getElementById("blogResim").value = "Varsayılan blog resmi...";
-                    //       document.getElementById("blogResim").disabled = true;
-
                 } else {
                     document.getElementById("blogResim").value = "";
                     document.getElementById("blogResim").disabled = false;

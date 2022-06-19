@@ -7,11 +7,9 @@
 		<!-- Favicon-->
 		<link rel="shortcut icon" href="img/logo2.png">
 		<!-- Author Meta -->
-		<meta name="author" content="codepixer">
+		<meta name="author" content="">
 		<!-- Meta Description -->
 		<meta name="description" content="">
-		<!-- Meta Keyword -->
-		<meta name="keywords" content="">
 		<!-- meta character set -->
 		<meta charset="UTF-8">
 		<!-- Site Title -->
@@ -32,18 +30,16 @@
 	</head>
 
 	<body>
-
 		<header id="header" id="home">
 
 			<?php
 			include 'php/user.php';
 
-			if (isset($_GET['kullanici'])) {
-				$currentUserID = $_GET["kullanici"];
+			if (isset($_COOKIE["Id"])) {
+				$currentUserID = $_COOKIE["Id"];
 			} else {
 				$currentUserID = -1;
 			}
-
 			?>
 
 			<div class="header-top">
@@ -58,7 +54,7 @@
 			<div class="container">
 				<div class="row align-items-center justify-content-between d-flex">
 					<div id="logo">
-						<a href="index.php?kullanici=<?php echo $currentUserID ?>"><img src="img/logo2.png" alt="" title="" /></a>
+						<a href="index.php"><img src="img/logo2.png" alt="" title="" /></a>
 					</div>
 					<nav id="nav-menu-container">
 						<ul class="nav-menu">
@@ -66,26 +62,23 @@
 							<?php
 							include 'php/user.php';
 
-							if (isset($_GET['kullanici'])) {
-								$currentUserID = $_GET["kullanici"];
+							if (isset($_COOKIE["Id"])) {
+								$currentUserID = $_COOKIE["Id"];
 							} else {
 								$currentUserID = -1;
 							}
-
 							?>
 
-							<li class="menu-active"><a href="index.php?kullanici=<?php echo $currentUserID ?>">Anasayfa</a></li>
+							<li class="menu-active"><a href="index.php">Anasayfa</a></li>
 							<li><a href="#about">Hakkında</a></li>
 							<li><a href="#review">Önizleme</a></li>
 							<li><a href="#blog">Bloglar</a></li>
 
-
-
 							<?php
 							include 'php/user.php';
 
-							if (isset($_GET['kullanici'])) {
-								$currentUserID = $_GET["kullanici"];
+							if (isset($_COOKIE["Id"])) {
+								$currentUserID = $_COOKIE["Id"];
 							} else {
 								$currentUserID = -1;
 							}
@@ -105,7 +98,7 @@
 								?>
 								<li><a href="#"><?php echo $result ?></a>
 									<ul>
-										<li><a href="blog_ekle.php?kullanici=<?php echo $currentUserID ?>">Blog Ekle</a></li>
+										<li><a href="blog_ekle.php">Blog Ekle</a></li>
 
 										<?php
 										include 'php/connection.php';
@@ -115,25 +108,23 @@
 
 										if ($result == "A") {
 										?>
-											<li><a href="admin.php?kullanici=<?php echo $currentUserID ?>">Admin Dashboard</a></li>
+											<li><a href="admin.php">Admin Dashboard</a></li>
 										<?php
 										}
 										?>
 
-										<li><a href="index.php">Çıkış Yap</a></li>
+										<li><a href="php/cikis.php">Çıkış Yap</a></li>
 									</ul>
 								</li>
 							<?php
 							}
 							?>
 
-
 						</ul>
 					</nav><!-- #nav-menu-container -->
 				</div>
 			</div>
 		</header><!-- #header -->
-
 
 		<!-- start banner Area -->
 		<section class="banner-area" id="home">
@@ -168,14 +159,11 @@
 							şeyi yazıya dökerek kalıcı hale getirebildiği diğer bloglara
 							yorumlar atıp yıldız verebildiği forum sitesi.
 						</p>
-
 					</div>
 				</div>
 			</div>
 		</section>
 		<!-- End video-sec Area -->
-
-
 
 		<!-- Start gallery Area -->
 		<section class="gallery-area section-gap" id="gallery">
@@ -363,7 +351,7 @@
 							<ul class="post-tags">
 								<li><a><?php echo $blogyazarAdi ?></a></li>
 							</ul>
-							<a href="generic_blog.php?blog=4&kullanici=<?php echo $currentUserID ?>">
+							<a href="generic_blog.php?blog=<?php echo $i ?>">
 								<h4><?php echo $blogbaslik ?></h4>
 							</a>
 
@@ -378,16 +366,13 @@
 
 					<div>
 						<br><br>
-						<a href="bloglar.php?kullanici=<?php echo $currentUserID ?>" class="genric-btn primary circle">Tüm Bloglar</a>
-
-
+						<a href="bloglar.php" class="genric-btn primary circle">Tüm Bloglar</a>
 					</div>
 
 				</div>
 			</div>
 		</section>
 		<!-- End blog Area -->
-
 
 		<!-- start footer Area -->
 		<footer class="footer-area section-gap">
@@ -400,6 +385,7 @@
 							<p>Sosyal medya hesaplarımız</p>
 							<div class="footer-social d-flex align-items-center">
 								<a href="https://www.linkedin.com/in/beyza-küçük-159007221" target="_blank"><i class="fa  fa-linkedin-square"></i></a>
+								<a href="https://www.linkedin.com/in/muhammet-yasir-%C3%A7olak-9895641a0/" target="_blank"><i class="fa  fa-linkedin-square"></i></a>
 							</div>
 						</div>
 					</div>

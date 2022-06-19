@@ -1,4 +1,3 @@
-// yorum veritabanı işlemleri
 <?php
 include('connection.php');
 
@@ -22,11 +21,11 @@ $result = mysqli_query($con, $sql);
 if ($result == 1) {
     echo "<h1><center> Kayıt Başarılı <center></h1>";
 
-    header("Location: https://localhost/coffee-web/generic_blog.php?blog=$blogID&kullanici=$kullaniciID");
+    header("Location: https://localhost/coffee-web/generic_blog.php?blog=$blogID");
 } else {
     echo "<h1> Hata! Bi şey oldu? </h1>";
 }
-
+?>
 
 
 

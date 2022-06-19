@@ -16,30 +16,10 @@ $result2= $con->query("delete from `yorum` where yorum.blog_id='$blogID'");
 
 if($result1==1 && $result2==1){
 
-      header("Location: https://localhost/coffee-web/admin.php?kullanici=$adminID");
+      header("Location: https://localhost/coffee-web/admin.php");
 
 }
 else{
     echo "Silinemedi!";
 }
-
-
-
-
-
-
-/*
-include('connection.php');
-
-$kullaniciadi=$_POST['kullaniciAdi'];
-
-$result= $con->query("delete from `kullanici` where kullanici.kullanici_adi='$kullaniciadi'");
-
-// kullaniciya ait tüm yorum ve blogları sil.
-
-
-
-
-*/
-
 ?>

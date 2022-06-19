@@ -7,11 +7,9 @@
 	<!-- Favicon-->
 	<link rel="shortcut icon" href="img/logo2.png">
 	<!-- Author Meta -->
-	<meta name="author" content="codepixer">
+	<meta name="author" content="">
 	<!-- Meta Description -->
 	<meta name="description" content="">
-	<!-- Meta Keyword -->
-	<meta name="keywords" content="">
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
@@ -32,34 +30,31 @@
 </head>
 
 <body>
-
 	<header id="header" id="home">
 
 		<?php
 		include 'php/user.php';
 
-		if (isset($_GET['kullanici'])) {
-			$currentUserID = $_GET["kullanici"];
+		if (isset($_COOKIE["Id"])) {
+			$currentUserID = $_COOKIE["Id"];
 		} else {
 			$currentUserID = -1;
 		}
-
 		?>
 
 		<div class="container">
 			<div class="row align-items-center justify-content-between d-flex">
 				<div id="logo">
-					<a href="index.php?kullanici=<?php echo $currentUserID ?>"><img src="img/logo2.png" alt="" title="" /></a>
+					<a href="index.php"><img src="img/logo2.png" alt="" title="" /></a>
 				</div>
 				<nav id="nav-menu-container">
 					<ul class="nav-menu">
-						<li class="menu-active"><a href="index.php?kullanici=<?php echo $currentUserID ?>">Anasayfa</a></li>
+						<li class="menu-active"><a href="index.php">Anasayfa</a></li>
 					</ul>
 				</nav><!-- #nav-menu-container -->
 			</div>
 		</div>
 	</header><!-- #header -->
-
 
 	<!-- start banner Area -->
 	<section class="banner-area" id="home">
@@ -171,12 +166,8 @@
 		<div class="container border-top-generic">
 			<h3 class="about-title mb-30" style="text-align:center">Kullanıcılar</h3>
 			<div class="row">
-
-
 				<div class="col-lg-12 col-md-8">
-
 					<hr>
-
 					<div style="background-color:#b68834;" class="row">
 
 						<div class="mt-10 col-lg-5">
@@ -186,7 +177,6 @@
 						<div class="mt-10 col-lg-5">
 							<input type="password" id="sifre" name="sifre" placeholder="Şifre" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Şifre'" required class="single-input-primary" disabled>
 						</div>
-
 
 					</div>
 
@@ -236,19 +226,14 @@
 								<input type="hidden" name="adminID" value="<?php echo $currentUserID ?>">
 								<input type="submit" id="btn" class="genric-btn primary circle" value="X" />
 
-
-
 							</div>
 						</form>
 
-
-
-
-					<?php } ?>
-
+				<?php
+				} 
+				?>
 
 				</div>
-
 			</div>
 		</div>
 	</section>
@@ -260,7 +245,6 @@
 			<div class="row">
 				<div class="col-lg-12 col-md-8">
 					<div style="background-color:#b68834;" class="row">
-
 
 						<div class="mt-10 col-lg-4">
 							<input type="text" placeholder="Kullanıcı" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Kullanıcı'" required class="single-input-primary" disabled>
@@ -276,18 +260,14 @@
 
 					</div>
 
-
 					<?php
-
 					include('php/connection.php');
 					$totalYorum = $con->query("select COUNT(yorum.yorum_id) from `yorum`");
 					$sonuc = $totalYorum->fetch_assoc();
 					$totalYorum = $sonuc['COUNT(yorum.yorum_id)'];
-
 					?>
 
 					<?php
-
 					for ($i = 1; $i <= $totalYorum; $i++) {
 
 						include 'php/connection.php';
@@ -303,8 +283,6 @@
 						$yorum = $sonuc['mesaj'];
 						$blogID = $sonuc['blog_id'];
 
-
-
 						$result = $con->query("SELECT kullanici.kullanici_adi FROM `kullanici` WHERE kullanici.kullanici_id = '$kullaniciID'");
 						$kullaniciAdi = $result->fetch_assoc();
 						$kullaniciAdi = $kullaniciAdi['kullanici_adi'];
@@ -312,11 +290,6 @@
 						$result = $con->query("SELECT bloglar.baslik FROM `bloglar` WHERE bloglar.blog_id = '$blogID'");
 						$blogAdi = $result->fetch_assoc();
 						$blogAdi = $blogAdi['baslik'];
-
-
-						// php kapat ekrana bas.
-
-
 					?>
 
 						<br>
@@ -342,20 +315,12 @@
 							</div>
 						</form>
 
-
 					<?php
-
 					}
-
-
 					?>
-
 
 				</div>
 			</div>
-
-
-
 		</div>
 		</div>
 	</section>
@@ -364,33 +329,25 @@
 	<section class="about-generic-area section-gap">
 		<div class="container border-top-generic">
 			<h3 class="about-title mb-30" style="text-align:center">Bloglar</h3>
-
 			<div class="row">
 				<div class="col-lg-12 col-md-8">
 					<div style="background-color:#b68834;" class="row">
-
-
 						<div class="mt-10 col-lg-5">
 							<input type="text" placeholder="Blog Başlık" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Blog Başlık'" required class="single-input-primary" disabled>
 						</div>
-
 						<div class="mt-10 col-lg-5">
 							<input type="text" placeholder="Tarih" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Tarih'" required class="single-input-primary" disabled>
 						</div>
 					</div>
 
-
 					<?php
-
 					include('php/connection.php');
 					$totalBlog = $con->query("select COUNT(bloglar.blog_id) from `bloglar`");
 					$sonuc = $totalBlog->fetch_assoc();
 					$totalBlog = $sonuc['COUNT(bloglar.blog_id)'];
-
 					?>
 
 					<?php
-
 					for ($i = 1; $i <= $totalBlog; $i++) {
 
 						include 'php/connection.php';
@@ -404,18 +361,11 @@
 
 						$blogAdi = $sonuc['baslik'];
 						$tarih = $sonuc['tarihSaat'];
-
-
-						// php kapat ekrana bas.
-
-
 					?>
 
 						<br>
 						<form action="php/blogSil.php" onsubmit={validation()} method="POST">
 							<div class="row">
-
-
 
 								<div class="mt-10 col-lg-5">
 									<input type="text" name="blogName" placeholder="<?php echo $blogAdi ?>" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $blogAdi ?>'" required class="single-input-primary" value="<?php echo $blogAdi ?>">
@@ -429,25 +379,15 @@
 
 								<input type="submit" id="btn" class="genric-btn primary circle" value="X" />
 
-
-
 							</div>
 						</form>
 
-
 					<?php
-
 					}
-
-
 					?>
-
 
 				</div>
 			</div>
-
-
-
 		</div>
 		</div>
 	</section>
